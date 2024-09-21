@@ -1,0 +1,670 @@
+/* Suave comportamiento de desplazamiento en la página */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilos generales para el cuerpo de la página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    overflow-x: hidden;
+    /* Evitar desplazamiento horizontal */
+    background-image: url('/static/img/nuevofondoweb.png');
+    /* Imagen de fondo */
+    background-size: 100%;
+    /* La imagen cubrirá toda el área */
+    background-position: center;
+    /* Centrar la imagen */
+    background-repeat: no-repeat;
+    /* Evitar repetición de la imagen */
+    background-attachment: fixed;
+    /* Fijar la imagen de fondo */
+}
+
+
+/* Resetear padding y margin en listas no ordenadas */
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+/* Quitar estilo de lista en elementos del menú de navegación */
+nav>ul>li {
+    list-style: none;
+}
+
+/* Estilo general para enlaces */
+a {
+    color: rgb(16, 179, 51);
+    /* Color para los enlaces */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    /* Transición suave al hacer hover */
+}
+
+/* Configuración de párrafos */
+p {
+    line-height: 1.8;
+    /* Altura de línea aumentada para legibilidad */
+    margin-top: 0;
+}
+
+/* Estilo básico para títulos de segundo nivel (h2) */
+h2 {
+    margin-top: 0;
+}
+
+/* Contenedor general */
+.tm-container {
+    padding: 10px;
+}
+
+/* Estilo de filas con distribución flexible */
+.tm-row {
+    display: flex;
+    justify-content: space-between;
+    /* Espacio entre elementos */
+}
+
+/* Columna izquierda (navegación lateral) */
+.tm-left {
+    width: 15%;
+    /* Adjust as needed */
+}
+
+/* Columna derecha (contenido principal) */
+.tm-right {
+    width: 90%;
+    /* Make sure this complements the width of .tm-left */
+    align-items: right;
+    /* revisar */
+}
+
+/* Fijar la navegación lateral izquierda */
+.tm-left-inner {
+    position: fixed;
+    /* Mantiene la posición fija al hacer scroll */
+}
+
+/* Cabecera del sitio con una imagen */
+.tm-site-header {
+    background: url('/static/img/gulamaps-sin-fondo.png') no-repeat center center;
+    /* Reemplaza con la ruta a tu imagen */
+    background-size: cover;
+    /* Ajusta la imagen para cubrir el área completa */
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Centra los elementos en horizontal */
+    padding: 0 20px;
+    /* Elimina el color de fondo para mostrar la imagen */
+    color: transparent;
+    /* Oculta el texto si ya no es necesario */
+}
+
+/* Estilos específicos para la sección de Bares */
+.bars-section .tm-list-item {
+    background-color: #333333; /* Cambia el color de fondo de los bares */
+}
+
+.bars-section .tm-list-item-text {
+    background-color: #555555; /* Cambia el color de fondo de la caja de texto de los bares */
+    color: #ffffff; /* Cambia el color del texto para que contraste con el fondo */
+}
+
+/* Si deseas cambiar también el color del fondo de los enlaces dentro de la sección de Bares */
+.bars-section .tm-list-item a {
+    color: #ffcc00; /* Color de los enlaces dentro de la sección de bares */
+}
+
+/* Estilos específicos para la sección de Cafeterías */
+.cafes-section .tm-list-item {
+    background-color: #5a381d; /* Cambia el color de fondo de las cafeterías */
+}
+
+.cafes-section .tm-list-item-text {
+    background-color: #382512; /* Cambia el color de fondo de la caja de texto de las cafeterías */
+    color: #ffffff; /* Cambia el color del texto para que contraste con el fondo */
+}
+
+/* Si deseas cambiar también el color del fondo de los enlaces dentro de la sección de Cafeterías */
+.cafes-section .tm-list-item a {
+    color: #ffcc00; /* Color de los enlaces dentro de la sección de cafeterías */
+}
+
+
+/* Logo del sitio */
+.tm-site-logo {
+    margin-right: 30px;
+}
+
+/* Nombre del sitio */
+.tm-site-name {
+    font-size: 2.2rem;
+    font-style: italic;
+}
+
+/* Menú de navegación del sitio */
+.tm-left-inner {
+    max-width: 200px;
+    width: 20%;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Barra de Busqueda */
+#search-input {
+    padding: 10px;
+    width: 60%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.tm-site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que el menú se ajuste a múltiples líneas si es necesario */
+    justify-content: space-between;
+    /* Distribuye el espacio equitativamente */
+    padding: 20px 0 0;
+    /* Ajusta el valor de 20px según lo necesario */
+}
+
+.tm-site-nav-ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Hace que los elementos se ajusten si no caben en una fila */
+    gap: 25px;
+    /* Añade espacio entre los elementos */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Elementos del menú de navegación */
+.tm-page-nav-item {
+    margin: 0 10px;
+}
+
+
+/* Estilo para los enlaces del menú */
+.tm-page-link {
+    min-width: 200px;
+    height: 100px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efectos al hacer hover o al estar activo en el menú */
+.tm-page-link:hover,
+.tm-page-link.active {
+    background-color: rgb(238, 3, 3);    /* Cambia el fondo a azul */
+    color: rgb(0, 0, 0);    /* Cambia el color del texto a blanco */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Íconos en los enlaces del menú */
+.tm-page-link-icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+/* Fondo negro semitransparente */
+.tm-black-bg {
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fondo negro con transparencia */
+    color: rgb(238, 240, 112);
+    /* Texto en blanco */
+}
+
+/* Navegación de bebidas */
+.tm-drinks-nav>ul>li {
+    display: inline-block;
+}
+
+/* Los elementos del menú están en línea */
+
+/* Estilo de los enlaces de la barra de bebidas */
+.tm-drinks-nav>ul>li>a {
+    color: white;
+    font-size: 1.2rem;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+}
+
+/* Altura de la barra de navegación */
+.tm-drinks-nav {
+    height: 80px;
+}
+
+/* Flexbox para alinear los elementos dentro de la barra de navegación */
+.tm-drinks-nav>ul {
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente los elementos */
+    justify-content: space-around;
+    /* Espacio uniforme entre los elementos */
+    height: 100%;
+}
+
+/* Hover y estado activo en la barra de bebidas */
+.tm-drinks-nav>ul>li a.active,
+.tm-drinks-nav>ul>li a:hover {
+    color: #ec1313;
+    /* Cambia el color del texto al hacer hover o estar activo */
+    border-bottom: 4px solid #ec1313;
+    /* Agrega un borde inferior cuando está activo */
+}
+
+/*
+/* Listado de productos con estilo de cuadrícula */
+.tm-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+*/
+
+/* este es nuevo inicia*/
+.tm-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* Ajusta el tamaño mínimo de cada columna y se adapta automáticamente */
+    gap: 20px;
+    /* Espacio entre los elementos */
+}
+
+/* este es nuevo termina*/
+
+
+.tm-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #ecd2af;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra opcional */
+}
+
+.tm-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));    /* Ajusta el tamaño mínimo de cada columna */
+    gap: 20px;    /* Espacio entre elementos */
+    padding: 20px;    /* Opcional: Añadir relleno alrededor de la cuadrícula */
+    width: 90%;    /* Mantén este valor si lo prefieres */
+    /* Elimina el ajuste de altura */
+    height: auto;    /* Ajusta la altura según el contenido */
+
+}
+
+
+.tm-list-item-2 { align-items: flex-start; } /*{ align-items: flex-start; }*/
+
+
+.tm-list-item-img {
+    width: 45%;
+    height: auto;
+    max-width: 140px;
+    object-fit: cover; /* Esto ajusta la imagen al tamaño sin distorsionarla */
+    margin-bottom: 5px; /* Limitar el tamaño de las imágenes */
+}
+  
+
+/* Texto del producto */
+.tm-list-item-img-big {
+    margin-right: 25px;
+    width: 50px;
+    /* 200px */
+    height: 200px;
+    /* 200px */
+}
+
+.tm-list-item-text {
+    padding: 20px 10px;
+    /* padding: 20px 25px; */
+    flex: 1;
+}
+
+.tm-list-item-text-2 {
+    flex: 1;
+}
+
+.tm-list-item-name {
+    display: grid;
+    /*flex*/
+    justify-content: space-between;
+    margin-top: 0;
+}
+
+/* Precio del producto */
+.tm-list-item-price {
+    color: #ffffff;     /* Color del precio */
+    font-size: 14px;    /* Este es un ejemplo del tamaño de fuente */
+    margin-top: 15px; /* Espacio entre el precio y el texto de arriba */
+}
+
+/* Pie de página del sitio */
+.tm-site-footer {
+    margin-top: 15px;
+}
+
+/* Texto en el pie de página 
+.tm-footer-text {
+    padding: 10px 65px 10px 20px;
+    display: inline-block;
+}*/
+.tm-footer-text {
+    padding: 10px 65px 10px 20px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+ 
+}
+
+
+
+.tm-footer-link {
+    color: rgb(255, 255, 255);
+}
+
+.tm-tab-content {
+    animation: fadeEffect 1s;
+}
+
+.tm-page-content {
+    animation: fadeEffect 1s;
+}
+
+.tm-text-primary {
+    color: rgb(252, 0, 0);
+}
+
+.tm-mb-20 {
+    margin-bottom: 20px;
+}
+
+.tm-mb-30 {
+    margin-bottom: 30px;
+}
+
+.tm-img-right {
+    margin-left: 30px;
+    margin-right: 0;
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* About */
+.tm-about-box-1 {
+    padding: 40px 30px 50px 0;
+}
+
+.tm-about-box-2 {
+    padding: 50px 40px 30px;
+}
+
+.tm-about-header {
+    margin-left: 220px;
+}
+
+/* Special */
+.tm-special-items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -30px -10px 0;
+}
+
+.tm-special-item {
+    max-width: 320px;
+    margin: 30px 10px;
+}
+
+.tm-special-item-title {
+    font-size: 1.4rem;
+}
+
+.tm-special-item-description {
+    padding: 15px 10px;
+}
+
+/* Contact */
+.tm-contact-text-container {
+    padding: 45px 50px;
+    margin-bottom: 20px;
+}
+
+.tm-contact-form-container {
+    max-width: 460px;
+    padding: 40px 50px;
+    box-sizing: border-box;
+}
+
+.tm-form-group {
+    margin-bottom: 25px;
+}
+
+.tm-form-control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 0;
+    border-bottom: 1px solid rgb(255, 0, 0);
+}
+
+.tm-form-control::-webkit-input-placeholder {
+    color: white;
+}
+
+/* Edge */
+.tm-form-control:-ms-input-placeholder {
+    color: white;
+}
+
+/* Internet Explorer 10-11 */
+.tm-form-control::placeholder {
+    color: white;
+}
+
+.tm-btn-primary {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border: 0;
+    padding: 12px 40px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover para el botón */
+.tm-btn-primary:hover {
+    color: white;
+    background-color: rgb(255, 0, 0);
+    /* Cambia a azul cuando se hace hover */
+}
+
+/* Estilos responsivos para pantallas medianas (992px a 1130px) */
+.tm-align-right {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.tm-mb-30 {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1130px) and (min-width: 992px) {
+    .tm-left-inner {
+        max-width: 380px;
+    }
+
+    .tm-site-name {
+        font-size: 2.6rem;
+    }
+
+    .tm-site-logo {
+        margin-right: 20px;
+    }
+
+    .tm-page-link {
+        width: 100%;
+    }
+
+    .tm-page-link-icon {
+        margin-right: 15px;
+    }
+
+    .tm-left {
+        width: 45%;
+    }
+
+    .tm-right {
+        width: 55%;
+    }
+}
+
+
+/* Estilos para pantallas pequeñas (menor a 991px) */
+@media (max-width: 991px) {
+    .tm-left {
+        width: 100%;
+        /* Full width on smaller screens */
+    }
+
+    .tm-right {
+        width: 100%;
+        /* Full width on smaller screens */
+    }
+
+    .tm-left-inner {
+        position: static;
+    }
+
+    .tm-row {
+        display: block;
+    }
+
+    .tm-left {
+        margin-bottom: 50px;
+    }
+}
+
+
+@media (max-width: 574px) {
+    .tm-site-nav-ul {
+        display: block;
+    }
+}
+
+@media (max-width: 550px) and (min-width: 501px) {
+    .tm-list-item-img-big {
+        width: 160px;
+        height: 160px;
+    }
+
+    .tm-about-header {
+        margin-left: 180px;
+    }
+}
+
+@media (max-width: 500px) {
+    .tm-about-header {
+        margin-left: 0;
+    }
+
+    .tm-list-item-2 {
+        flex-direction: column;
+    }
+
+    .tm-about-box-1 {
+        padding-left: 30px;
+    }
+
+    .tm-list-item-img-big {
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .tm-img-right {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 479px) {
+    .tm-site-name {
+        font-size: 2.6rem;
+    }
+
+    .tm-site-logo {
+        margin-right: 20px;
+    }
+
+    .tm-list-item {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .tm-list-item-img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .tm-drinks-nav {
+        height: auto;
+    }
+
+    .tm-drinks-nav>ul {
+        flex-direction: column;
+        padding: 10px;
+        /* 15px */
+    }
+
+    .tm-drinks-nav>ul>li {
+        margin-bottom: 10px;
+    }
+
+    .tm-drinks-nav>ul>li>a {
+        display: block;
+    }
+}

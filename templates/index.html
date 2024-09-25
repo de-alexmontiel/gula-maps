@@ -85,14 +85,15 @@ https://www.tooplate.com/view/2121-wave-cafe
               <div class="tm-list-container">
                 {% for place in restaurants %}
                 <div class="tm-list-item">
-              <!--    <img src="static/img/restaurant-logo.png" alt="Image" class="tm-list-item-img"> -->
-              <img src="https://via.placeholder.com/150" alt="Imagen de prueba" class="tm-list-item-img">
+                  <img src="static/img/restaurant-logo.png" alt="Image" class="tm-list-item-img">
+                  <!--  <img src="https://via.placeholder.com/150" alt="Imagen de prueba" class="tm-list-item-img"> -->
 
-                <img src="{{ place['LogoURL'] }}" alt="Logo de {{ place['Nombre'] }}" class="tm-list-item-img"> 
+                 <!--  <img src="{{ place['LogoURL'] }}" alt="Logo de {{ place['Nombre'] }}" class="tm-list-item-img"> -->
                   <div class="tm-black-bg tm-list-item-text">
                     <h3 class="tm-list-item-name">{{ place['Nombre'] }}
                       <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía Whatsapp</a>
+                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía
+                          Whatsapp</a>
                       </span>
                     </h3>
                     <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p>
@@ -115,7 +116,8 @@ https://www.tooplate.com/view/2121-wave-cafe
                   <div class="tm-black-bg tm-list-item-text">
                     <h3 class="tm-list-item-name">{{ place['Nombre'] }}
                       <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía Whatsapp</a>
+                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía
+                          Whatsapp</a>
                       </span>
                     </h3>
                     <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p>
@@ -139,7 +141,8 @@ https://www.tooplate.com/view/2121-wave-cafe
                   <div class="tm-black-bg tm-list-item-text">
                     <h3 class="tm-list-item-name">{{ place['Nombre'] }}
                       <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía Whatsapp</a>
+                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía
+                          Whatsapp</a>
                       </span>
                     </h3>
                     <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p>

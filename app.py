@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import os, json
+from oauth2client.service_account import ServiceAccountCredentials
 
 app = Flask(__name__)
 
@@ -8,7 +10,9 @@ app = Flask(__name__)
 def obtener_datos_google_sheets():
     # Autenticación y conexión con Google Sheets
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('C:/Users/Alejandro P Montiel/Super_menu_paraiso/my_project/credentials.json', scope)
+    #creds = ServiceAccountCredentials.from_json_keyfile_name('C:/Users/Alejandro P Montiel/Super_menu_paraiso/my_project/credentials.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+
     client = gspread.authorize(creds)
     
     # Abrir la hoja de cálculo y seleccionar la pestaña 'Establecimientos'

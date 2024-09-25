@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gula Maps</title>
-  <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+  <!--<link rel="stylesheet" href="fontawesome/css/all.min.css">  https://fontawesome.com/ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
   <!-- https://fonts.google.com/ -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tooplate-wave-cafe.css') }}">
@@ -162,7 +164,7 @@ https://www.tooplate.com/view/2121-wave-cafe
               <div class="tm-black-bg tm-mb-20 tm-about-box-1">
                 <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
                 <div class="tm-list-item tm-list-item-2">
-                  <img src="img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
+                  <img src="static/img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
                   <div class="tm-list-item-text-2">
                     <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for
                       your
@@ -180,7 +182,7 @@ https://www.tooplate.com/view/2121-wave-cafe
                     <p>If you wish to support us, please contact Tooplate. Thank you. Duis bibendum erat nec ipsum
                       consectetur sodales.</p>
                   </div>
-                  <img src="img/about-2.png" alt="Image" class="tm-list-item-img tm-list-item-img-big tm-img-right">
+                  <img src="static/img/about-2.png" alt="Image" class="tm-list-item-img tm-list-item-img-big tm-img-right">
                 </div>
                 <p>Donec non urna elit. Quisque ut magna in dui mattis iaculis eu finibus metus. Suspendisse vel mi a
                   lacus finibus vehicula vel ut diam. Nam pellentesque, mi quis ullamcorper.</p>
@@ -192,7 +194,7 @@ https://www.tooplate.com/view/2121-wave-cafe
             <div id="special" class="tm-page-content">
               <div class="tm-special-items">
                 <div class="tm-black-bg tm-special-item">
-                  <img src="img/special-01.jpg" alt="Image">
+                  <img src="static/img/special-01.jpg" alt="Image">
                   <div class="tm-special-item-description">
                     <h2 class="tm-text-primary tm-special-item-title">Special One</h2>
                     <p class="tm-special-item-text">Here is a short text description for the first special item. You are
@@ -200,7 +202,7 @@ https://www.tooplate.com/view/2121-wave-cafe
                   </div>
                 </div>
                 <div class="tm-black-bg tm-special-item">
-                  <img src="img/special-02.jpg" alt="Image">
+                  <img src="static/img/special-02.jpg" alt="Image">
                   <div class="tm-special-item-description">
                     <h2 class="tm-text-primary tm-special-item-title">Second Item</h2>
                     <p class="tm-special-item-text">You are allowed to download, modify and use this template for your
@@ -208,7 +210,7 @@ https://www.tooplate.com/view/2121-wave-cafe
                   </div>
                 </div>
                 <div class="tm-black-bg tm-special-item">
-                  <img src="img/special-03.jpg" alt="Image">
+                  <img src="static/img/special-03.jpg" alt="Image">
                   <div class="tm-special-item-description">
                     <h2 class="tm-text-primary tm-special-item-title">Third Special Item</h2>
                     <p class="tm-special-item-text">Pellentesque in ultrices mi, quis mollis nulla. Quisque sed commodo
@@ -216,7 +218,7 @@ https://www.tooplate.com/view/2121-wave-cafe
                   </div>
                 </div>
                 <div class="tm-black-bg tm-special-item">
-                  <img src="img/special-04.jpg" alt="Image">
+                  <img src="static/img/special-04.jpg" alt="Image">
                   <div class="tm-special-item-description">
                     <h2 class="tm-text-primary tm-special-item-title">Special Item Fourth</h2>
                     <p class="tm-special-item-text">Vivamus finibus nulla sed metus sagittis, sed ultrices magna
@@ -225,7 +227,7 @@ https://www.tooplate.com/view/2121-wave-cafe
                   </div>
                 </div>
                 <div class="tm-black-bg tm-special-item">
-                  <img src="img/special-05.jpg" alt="Image">
+                  <img src="static/img/special-05.jpg" alt="Image">
                   <div class="tm-special-item-description">
                     <h2 class="tm-text-primary tm-special-item-title">Sixth Sense</h2>
                     <p class="tm-special-item-text">Here is a short text description for sixth item. This text is four
@@ -233,7 +235,7 @@ https://www.tooplate.com/view/2121-wave-cafe
                   </div>
                 </div>
                 <div class="tm-black-bg tm-special-item">
-                  <img src="img/special-06.jpg" alt="Image">
+                  <img src="static/img/special-06.jpg"alt="Image">
                   <div class="tm-special-item-description">
                     <h2 class="tm-text-primary tm-special-item-title">Seventh Item</h2>
                     <p class="tm-special-item-text">Curabitur eget erat sit amet sapien aliquet vulputate quis sed arcu.
@@ -254,10 +256,10 @@ https://www.tooplate.com/view/2121-wave-cafe
               <div class="tm-black-bg tm-contact-form-container tm-align-right">
                 <form action="" method="POST" id="contact-form">
                   <div class="tm-form-group">
-                    <input type="text" name="name" class="tm-form-control" placeholder="Name" required="" />
+                    <input type="text" name="name" class="tm-form-control" placeholder="Name" required="" autocomplete="Name" />
                   </div>
                   <div class="tm-form-group">
-                    <input type="email" name="email" class="tm-form-control" placeholder="Email" required="" />
+                    <input type="email" name="email" class="tm-form-control" placeholder="Email" required="" autocomplete="Email" />
                   </div>
                   <div class="tm-form-group tm-mb-30">
                     <textarea rows="6" name="message" class="tm-form-control" placeholder="Message"

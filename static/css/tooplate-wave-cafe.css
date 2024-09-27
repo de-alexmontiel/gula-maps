@@ -399,16 +399,25 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Sombra opcional */
 }
-
+/*
 .tm-list-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));    /* Ajusta el tamaño mínimo de cada columna */
-    gap: 20px;    /* Espacio entre elementos */
-    padding: 20px;    /* Opcional: Añadir relleno alrededor de la cuadrícula */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));    /* Ajusta el tamaño mínimo de cada columna 
+    gap: 20px;    /* Espacio entre elementos 
+    padding: 20px;    /* Opcional: Añadir relleno alrededor de la cuadrícula 
     width: 90%;    /* Mantén este valor si lo prefieres */
-    /* Elimina el ajuste de altura */
-    height: auto;    /* Ajusta la altura según el contenido */
+    /* Elimina el ajuste de altura 
+    height: auto;    /* Ajusta la altura según el contenido 
 
+}*/
+.tm-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 80%; /* Reducir el ancho del contenedor */
+    margin: 0 auto; /* Centrar el contenedor horizontalmente */
+    height: auto;
 }
 
 

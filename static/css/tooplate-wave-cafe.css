@@ -13,7 +13,7 @@ body {
     /* Evitar desplazamiento horizontal */
     background-image: url('/static/img/nuevofondoweb.png');
     /* Imagen de fondo */
-    background-size: 100%;
+    background-size: cover; /*100%;*/
     /* La imagen cubrirá toda el área */
     background-position: center;
     /* Centrar la imagen */
@@ -64,8 +64,7 @@ h2 {
 /* Estilo de filas con distribución flexible */
 .tm-row {
     display: flex;
-    justify-content: space-between;
-    /* Espacio entre elementos */
+    justify-content: space-between;    /* Espacio entre elementos */
 }
 
 /* Columna izquierda (navegación lateral) */
@@ -217,7 +216,7 @@ h2 {
 .tm-page-link:hover,
 .tm-page-link.active {
     background-color: rgb(238, 3, 3);    /* Cambia el fondo a azul */
-    color: rgb(0, 0, 0);    /* Cambia el color del texto a blanco */
+    color: white; /*rgb(0, 0, 0);    /* Cambia el color del texto a blanco */
     border-radius: 5px; /* Bordes redondeados */
 }
 
@@ -326,7 +325,7 @@ h2 {
 
 
 .tm-list-item-img {
-    width: 45%;
+    width: 100%;
     height: auto;
     max-width: 140px;
     object-fit: cover; /* Esto ajusta la imagen al tamaño sin distorsionarla */
@@ -376,7 +375,7 @@ h2 {
 .tm-footer-text {
     padding: 10px 65px 10px 20px;
     display: inline-block;
-}*/
+}
 .tm-footer-text {
     padding: 10px 65px 10px 20px;
     display: inline-block;
@@ -384,7 +383,13 @@ h2 {
     left: 0;
     width: 100%;
  
+}*/
+.tm-footer-text {
+    position: relative; /* Prevents overlapping */
+    padding: 10px 65px;
+    text-align: center;
 }
+
 
 
 
@@ -477,6 +482,11 @@ h2 {
     margin-bottom: 25px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+
 .tm-form-control {
     display: block;
     box-sizing: border-box;
@@ -560,8 +570,15 @@ h2 {
     }
 
     .tm-right {
+        width: 90%;
+        justify-content: flex-end; /* Correct alignment property */
+    }
+    
+/*
+    .tm-right {
         width: 55%;
     }
+        */
 }
 
 

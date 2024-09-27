@@ -5,33 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gula Maps</title>
-  <!--<link rel="stylesheet" href="fontawesome/css/all.min.css">  https://fontawesome.com/ -->
+  
+  <!-- External Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
-  <!-- https://fonts.google.com/ -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tooplate-wave-cafe.css') }}">
-
-  <!--
-Tooplate 2121 Wave Cafe
-https://www.tooplate.com/view/2121-wave-cafe
--->
 </head>
 
 <body>
   <div class="tm-container">
     <div class="tm-row">
-      <!-- Site Header -->
+      
+      <!-- Sidebar with Navigation -->
       <div class="tm-left">
         <div class="tm-left-inner">
+          
+          <!-- Site Header -->
           <div class="tm-site-header">
             <i class="fas fa-coffee fa-3x tm-site-logo"></i>
             <h1 class="tm-site-name">Gula Maps</h1>
           </div>
+          
+          <!-- Navigation Links -->
           <nav class="tm-site-nav">
             <ul class="tm-site-nav-ul">
               <li class="tm-page-nav-item">
-                <a href="#drink" class="tm-page-link active">
+                <a href="#food" class="tm-page-link active">
                   <i class="fas fa-mug-hot tm-page-link-icon"></i>
                   <span>Lugares de Comida.</span>
                 </a>
@@ -45,7 +44,7 @@ https://www.tooplate.com/view/2121-wave-cafe
               <li class="tm-page-nav-item">
                 <a href="#special" class="tm-page-link">
                   <i class="fas fa-glass-martini tm-page-link-icon"></i>
-                  <span>Actividades en Para</span>
+                  <span>En construcción</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
@@ -58,48 +57,46 @@ https://www.tooplate.com/view/2121-wave-cafe
           </nav>
         </div>
       </div>
+
+      <!-- Main Content -->
       <div class="tm-right">
         <main class="tm-main">
-          <div id="drink" class="tm-page-content">
-            <!-- Restaurantes Menu Page -->
+
+          <!-- Places Section -->
+          <div id="food" class="tm-page-content">
             <nav class="tm-black-bg tm-drinks-nav">
               <ul>
-                <li>
-                  <a href="#" class="tm-tab-link active" data-id="cold">Restaurantes</a>
-                </li>
-                <li>
-                  <a href="#" class="tm-tab-link" data-id="hot">Bares</a>
-                </li>
-                <li>
-                  <a href="#" class="tm-tab-link" data-id="cafe">Cafeterias</a>
-                </li>
+                <li><a href="#" class="tm-tab-link active" data-id="resta">Restaurantes</a></li>
+                <li><a href="#" class="tm-tab-link" data-id="bar">Bares</a></li>
+                <li><a href="#" class="tm-tab-link" data-id="cafe">Cafeterias</a></li>
               </ul>
             </nav>
-
+            
             <!-- Search Bar -->
             <div class="search-bar">
               <input type="text" id="search-input" placeholder="Buscar por nombre...">
             </div>
 
-
-            <!-- Restaurants Section -->
-            <div id="cold" class="tm-tab-content">
+            <!-- Common Section Template -->
+            {% for category, data in [('resta', restaurants), ('bar', bars), ('cafe', cafes)] %}
+            <div id="{{ category }}" class="tm-tab-content">
               <div class="tm-list-container">
-                {% for place in restaurants %}
+                {% for place in data %}
                 <div class="tm-list-item">
-                  <img src="static/img/restaurant-logo.png" alt="Image" class="tm-list-item-img">
-                  <!--  <img src="https://via.placeholder.com/150" alt="Imagen de prueba" class="tm-list-item-img"> -->
-
-                 <!--  <img src="{{ place['LogoURL'] }}" alt="Logo de {{ place['Nombre'] }}" class="tm-list-item-img"> -->
+                  <!-- Verificar si hay un icono personalizado -->
+                  {% if place['Icono'] is defined %}
+                    <img src="static/img/{{ place['Icono'] }}" alt="Image" class="tm-list-item-img">
+                  {% else %}
+                    <img src="static/img/{{ category }}-logo.png" alt="Image" class="tm-list-item-img">
+                  {% endif %}
                   <div class="tm-black-bg tm-list-item-text">
                     <h3 class="tm-list-item-name">{{ place['Nombre'] }}
                       <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía
-                          Whatsapp</a>
+                        <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar vía Whatsapp</a>
+
                       </span>
                     </h3>
                     <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p>
-                    <br>
                     <a href="{{ place['URL del Lugar'] }}">
                       <p class="tm-list-item-description">Ver en Google Maps</p>
                     </a>
@@ -108,188 +105,77 @@ https://www.tooplate.com/view/2121-wave-cafe
                 {% endfor %}
               </div>
             </div>
+            {% endfor %}
+            
+          </div>
 
-            <!-- Bars Section -->
-            <div id="hot" class="tm-tab-content bars-section">
-              <div class="tm-list-container">
-                {% for place in bars %}
-                <div class="tm-list-item">
-                  <img src="static/img/bar-logo.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">{{ place['Nombre'] }}
-                      <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía
-                          Whatsapp</a>
-                      </span>
-                    </h3>
-                    <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p>
-                    <br>
-                    <a href="{{ place[9] }}">
-                      <p class="tm-list-item-description">Ver en Google Maps</p>
-                    </a>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-
-
-            <!-- Cafeterías Section -->
-            <div id="cafe" class="tm-tab-content cafes-section">
-              <div class="tm-list-container">
-                {% for place in cafes %}
-                <div class="tm-list-item">
-                  <img src="static/img/cafe-logo.png" alt="Image" class="tm-list-item-img">
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">{{ place['Nombre'] }}
-                      <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono'].replace(' ', '') }}" target="_blank">Ordenar vía
-                          Whatsapp</a>
-                      </span>
-                    </h3>
-                    <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p>
-                    <br>
-                    <a href="{{ place[9] }}">
-                      <p class="tm-list-item-description">Ver en Google Maps</p>
-                    </a>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-
-
-            <!-- About Us Page -->
-            <div id="about" class="tm-page-content">
-              <div class="tm-black-bg tm-mb-20 tm-about-box-1">
-                <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
-                <div class="tm-list-item tm-list-item-2">
-                  <img src="static/img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
-                  <div class="tm-list-item-text-2">
-                    <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for
-                      your
-                      business websites.</p>
-                    <p>You can also use this for your client websites which you get paid for your website services.
-                      Please
-                      tell your friends about us.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="tm-black-bg tm-mb-20 tm-about-box-2">
-                <div class="tm-list-item tm-list-item-2">
-                  <div class="tm-list-item-text-2">
-                    <h2 class="tm-text-primary">How we began</h2>
-                    <p>If you wish to support us, please contact Tooplate. Thank you. Duis bibendum erat nec ipsum
-                      consectetur sodales.</p>
-                  </div>
-                  <img src="static/img/about-2.png" alt="Image" class="tm-list-item-img tm-list-item-img-big tm-img-right">
-                </div>
-                <p>Donec non urna elit. Quisque ut magna in dui mattis iaculis eu finibus metus. Suspendisse vel mi a
-                  lacus finibus vehicula vel ut diam. Nam pellentesque, mi quis ullamcorper.</p>
-              </div>
-            </div>
-            <!-- end About Us Page -->
-
-            <!-- Special Items Page -->
-            <div id="special" class="tm-page-content">
-              <div class="tm-special-items">
-                <div class="tm-black-bg tm-special-item">
-                  <img src="static/img/special-01.jpg" alt="Image">
-                  <div class="tm-special-item-description">
-                    <h2 class="tm-text-primary tm-special-item-title">Special One</h2>
-                    <p class="tm-special-item-text">Here is a short text description for the first special item. You are
-                      not allowed to redistribute this template ZIP file.</p>
-                  </div>
-                </div>
-                <div class="tm-black-bg tm-special-item">
-                  <img src="static/img/special-02.jpg" alt="Image">
-                  <div class="tm-special-item-description">
-                    <h2 class="tm-text-primary tm-special-item-title">Second Item</h2>
-                    <p class="tm-special-item-text">You are allowed to download, modify and use this template for your
-                      commercial or non-commercial websites.</p>
-                  </div>
-                </div>
-                <div class="tm-black-bg tm-special-item">
-                  <img src="static/img/special-03.jpg" alt="Image">
-                  <div class="tm-special-item-description">
-                    <h2 class="tm-text-primary tm-special-item-title">Third Special Item</h2>
-                    <p class="tm-special-item-text">Pellentesque in ultrices mi, quis mollis nulla. Quisque sed commodo
-                      est, quis tincidunt nunc.</p>
-                  </div>
-                </div>
-                <div class="tm-black-bg tm-special-item">
-                  <img src="static/img/special-04.jpg" alt="Image">
-                  <div class="tm-special-item-description">
-                    <h2 class="tm-text-primary tm-special-item-title">Special Item Fourth</h2>
-                    <p class="tm-special-item-text">Vivamus finibus nulla sed metus sagittis, sed ultrices magna
-                      aliquam.
-                      Mauris fermentum.</p>
-                  </div>
-                </div>
-                <div class="tm-black-bg tm-special-item">
-                  <img src="static/img/special-05.jpg" alt="Image">
-                  <div class="tm-special-item-description">
-                    <h2 class="tm-text-primary tm-special-item-title">Sixth Sense</h2>
-                    <p class="tm-special-item-text">Here is a short text description for sixth item. This text is four
-                      lines.</p>
-                  </div>
-                </div>
-                <div class="tm-black-bg tm-special-item">
-                  <img src="static/img/special-06.jpg"alt="Image">
-                  <div class="tm-special-item-description">
-                    <h2 class="tm-text-primary tm-special-item-title">Seventh Item</h2>
-                    <p class="tm-special-item-text">Curabitur eget erat sit amet sapien aliquet vulputate quis sed arcu.
-                    </p>
-                  </div>
+          <!-- About Us Page -->
+          <div id="about" class="tm-page-content">
+            <div class="tm-black-bg tm-mb-20 tm-about-box-1">
+              <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
+              <div class="tm-list-item tm-list-item-2">
+                <img src="static/img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
+                <div class="tm-list-item-text-2">
+                  <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for your business websites.</p>
+                  <p>You can also use this for your client websites which you get paid for your website services.</p>
                 </div>
               </div>
             </div>
-            <!-- end Special Items Page -->
+          </div>
 
-            <!-- Contact Page -->
-            <div id="contact" class="tm-page-content">
-              <div class="tm-black-bg tm-contact-text-container">
-                <h2 class="tm-text-primary">Contact Wave</h2>
-                <p>Wave Cafe Template has a video background. You can use this layout for your websites. Please contact
-                  Tooplate's Facebook page. Tell your friends about our website.</p>
+          <!-- Special Items Page -->
+          <div id="special" class="tm-page-content">
+            <div class="tm-special-items">
+              {% for item in special_items %}
+              <div class="tm-black-bg tm-special-item">
+                <img src="static/img/{{ item['img'] }}" alt="Image">
+                <div class="tm-special-item-description">
+                  <h2 class="tm-text-primary tm-special-item-title">{{ item['title'] }}</h2>
+                  <p class="tm-special-item-text">{{ item['description'] }}</p>
+                </div>
               </div>
-              <div class="tm-black-bg tm-contact-form-container tm-align-right">
-                <form action="" method="POST" id="contact-form">
-                  <div class="tm-form-group">
-                    <input type="text" name="name" class="tm-form-control" placeholder="Name" required="" autocomplete="Name" />
-                  </div>
-                  <div class="tm-form-group">
-                    <input type="email" name="email" class="tm-form-control" placeholder="Email" required="" autocomplete="Email" />
-                  </div>
-                  <div class="tm-form-group tm-mb-30">
-                    <textarea rows="6" name="message" class="tm-form-control" placeholder="Message"
-                      required=""></textarea>
-                  </div>
-                  <div>
-                    <button type="submit" class="tm-btn-primary tm-align-right">
-                      Submit
-                    </button>
-                  </div>
-                </form>
-              </div>
+              {% endfor %}
             </div>
-            <!-- end Contact Page -->
+          </div>
+
+          <!-- Contact Page -->
+          <div id="contact" class="tm-page-content">
+            <div class="tm-black-bg tm-contact-text-container">
+              <h2 class="tm-text-primary">Contact Wave</h2>
+              <p>Wave Cafe Template has a video background. You can use this layout for your websites.</p>
+            </div>
+            <div class="tm-black-bg tm-contact-form-container tm-align-right">
+              <form action="" method="POST" id="contact-form">
+                <div class="tm-form-group">
+                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required autocomplete="Name" />
+                </div>
+                <div class="tm-form-group">
+                  <input type="email" name="email" class="tm-form-control" placeholder="Email" required autocomplete="Email" />
+                </div>
+                <div class="tm-form-group tm-mb-30">
+                  <textarea rows="6" name="message" class="tm-form-control" placeholder="Message" required></textarea>
+                </div>
+                <button type="submit" class="tm-btn-primary tm-align-right">Submit</button>
+              </form>
+            </div>
+          </div>
+
         </main>
       </div>
     </div>
-    <footer class="tm-site-footer">
-      <p class="tm-black-bg tm-footer-text">pto el que lo lea
 
-        | Dev IG: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored"
-          target="_parent">@talegaman</a></p>
+    <!-- Footer -->
+    <footer class="tm-site-footer">
+      <p class="tm-black-bg tm-footer-text">
+        Pto el que lo lea | Dev IG: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored" target="_parent">@talegaman</a>
+      </p>
     </footer>
   </div>
 
-
+  <!-- Scripts -->
   <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
   <script>
-
-
+    // Tab Handling
     function openTab(evt, id) {
       $('.tm-tab-content').hide();
       $('#' + id).show();
@@ -297,79 +183,54 @@ https://www.tooplate.com/view/2121-wave-cafe
       $(evt.currentTarget).addClass('active');
     }
 
+    // Page Initialization
     function initPage() {
       let pageId = location.hash;
-
       if (pageId) {
         highlightMenu($(`.tm-page-link[href^="${pageId}"]`));
         showPage($(pageId));
-      }
-      else {
+      } else {
         pageId = $('.tm-page-link.active').attr('href');
         showPage($(pageId));
       }
     }
 
+    // Menu Highlight
     function highlightMenu(menuItem) {
       $('.tm-page-link').removeClass('active');
       menuItem.addClass('active');
     }
 
+    // Show Page
     function showPage(page) {
       $('.tm-page-content').hide();
       page.show();
     }
 
+    // Document Ready
     $(document).ready(function () {
-
-      /***************** Pages *****************/
-
       initPage();
-
       $('.tm-page-link').click(function (event) {
-
-        if (window.innerWidth > 991) {
-          event.preventDefault();
-        }
-
+        if (window.innerWidth > 991) event.preventDefault();
         highlightMenu($(event.currentTarget));
         showPage($(event.currentTarget.hash));
       });
 
-
-      /***************** Tabs *******************/
-
+      // Tab Navigation
       $('.tm-tab-link').on('click', e => {
         e.preventDefault();
-        openTab(e, $(e.target).data('id'));
+        openTab(e, $(e.currentTarget).data('id'));
       });
 
-      $('.tm-tab-link.active').click(); // Open default tab
-
-
-    });
-
-  </script>
-
-  <script>
-    // Filtrar lugares según el texto ingresado
-    document.getElementById('search-input').addEventListener('keyup', function () {
-      const searchText = this.value.toLowerCase(); // Texto a buscar
-      const listItems = document.querySelectorAll('.tm-list-item'); // Todos los lugares mostrados
-
-      listItems.forEach(function (item) {
-        const placeName = item.querySelector('.tm-list-item-name').innerText.toLowerCase();
-
-        // Mostrar u ocultar los elementos que coinciden o no con el texto de búsqueda
-        if (placeName.includes(searchText)) {
-          item.style.display = 'block'; // Mostrar el elemento
-        } else {
-          item.style.display = 'none'; // Ocultar el elemento
-        }
+      $('#search-input').on('input', function () {
+        const searchText = $(this).val().toLowerCase();
+        $('.tm-list-item').each(function () {
+          const placeName = $(this).find('.tm-list-item-name').text().toLowerCase();
+          $(this).toggle(placeName.includes(searchText));
+        });
       });
     });
   </script>
-
 </body>
 
 </html>

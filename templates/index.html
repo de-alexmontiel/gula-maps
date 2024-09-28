@@ -77,11 +77,11 @@
 
                     <!-- Enlace a WhatsApp -->
                     <span class="tm-list-item-price">
-                      <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar vía Whatsapp</a>
+                      <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank" class="whatsapp-link">Ordenar vía Whatsapp</a>
                     </span>
 
                     <!-- Enlace a Google Maps -->
-                    <a href="{{ place['URL del Lugar'] }}" target="_blank">
+                    <a href="{{ place['URL del Lugar'] }}" target="_blank" class="google-link">
                       <p class="tm-list-item-description">Ver en Google Maps</p>
                     </a>
                   </div>

@@ -24,18 +24,13 @@ body {
     /* Fijar la imagen de fondo */
 }
 
-/* Hover effect for list items 
 .tm-list-item:hover {
-    transform: scale(1.1) rotate(2deg);
-   
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05) rotate(2deg);
+    /* Cambiar tamaño ligeramente */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    /* Sombra más intensa */
     background-color: #f0f0f0;
-}
-*/
-.tm-list-item:hover {
-    transform: scale(1.05) rotate(2deg); /* Cambiar tamaño ligeramente */
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
-    background-color: #f0f0f0; /* Fondo al hacer hover */
+    /* Fondo al hacer hover */
 }
 
 /* Menu toggle - Hidden by default, visible on mobile */
@@ -56,27 +51,43 @@ body {
 
 /* Enlace de WhatsApp */
 .whatsapp-link {
-    color: #25D366; /* Color original de WhatsApp */
-    text-decoration: none; /* Sin subrayado */
-    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transición suave */
+    color: #25D366;
+    /* Color original de WhatsApp */
+    text-decoration: none;
+    /* Sin subrayado */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    /* Transición suave */
 }
 
 .whatsapp-link:hover {
-    color: #128C7E; /* Color al pasar el mouse */
-    text-decoration: underline; /* Subrayado al pasar el mouse */
+    color: #128C7E;
+    /* Color al pasar el mouse */
+    text-decoration: underline;
+    /* Subrayado al pasar el mouse */
 }
 
 /* Enlace de Google */
 .google-link {
-    color: #DB4437; /* Color original de Google */
-    text-decoration: none; /* Sin subrayado */
-    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transición suave */
+    color: #DB4437;
+    /* Color original de Google */
+    text-decoration: none;
+    /* Sin subrayado */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    /* Transición suave */
 }
 
 .google-link:hover {
-    color: #EA4335; /* Color al pasar el mouse */
-    text-decoration: underline; /* Subrayado al pasar el mouse */
+    color: #EA4335;
+    /* Color al pasar el mouse */
+    text-decoration: underline;
+    /* Subrayado al pasar el mouse */
 }
+.gold-star {
+    color: gold; /* Color dorado */
+    font-size: 20px; /* Ajusta el tamaño según prefieras */
+    margin-right: 2px; /* Espacio entre las estrellas */
+  }
+  
 
 
 /* Barra de navegación general */
@@ -352,14 +363,19 @@ h2 {
 /* Contenedor de la tarjeta */
 .tm-list-item {
     display: flex;
-    flex-direction: column; /* Cambiado a columna */
+    width: 100%;
+    flex-direction: column;
+    /* Cambiado a columna */
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff; /* Color de fondo blanco */
+    background-color: #ffffff;
+    /* Color de fondo blanco */
+    height: auto; /* Permitir ajuste automático */
 }
+
 .tm-list-item img {
     max-width: 100%;
     height: auto;
@@ -385,9 +401,11 @@ h2 {
 /* Sección de la imagen - 50% del alto */
 .tm-list-item-logo {
     width: 100%;
-    height: 50%; /* Ajustado a 50% del alto total */
-    object-fit: cover; /* Mantener la proporción */
-  }
+    height: 50%;
+    /* Ajustado a 50% del alto total */
+    object-fit: cover;
+    /* Mantener la proporción */
+}
 
 .tm-list {
     display: grid;
@@ -437,11 +455,13 @@ h2 {
 /* Sección de información - 50% del alto */
 .tm-list-item-text {
     padding: 15px;
-    height: 50%; /* Ajustado a 50% del alto total */
+    height: 50%;
+    /* Ajustado a 50% del alto total */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrar el contenido verticalmente */
-  }
+    justify-content: center;
+    /* Centrar el contenido verticalmente */
+}
 
 .tm-list-item-text-2 {
     flex: 1;
@@ -451,20 +471,21 @@ h2 {
     font-size: 1.2em;
     margin-bottom: 10px;
     font-weight: bold;
-  }
+}
 
-  .tm-list-item-description, .tm-list-item-price {
+.tm-list-item-description,
+.tm-list-item-price {
     margin: 5px 0;
     color: #be8212;
     text-decoration: none;
     font-weight: bold;
-  }
-  
-  .tm-list-item-price a {
+}
+
+.tm-list-item-price a {
     color: #d9534f;
     text-decoration: none;
     font-weight: bold;
-  }
+}
 
 /* Precio del producto */
 .tm-list-item-price {
@@ -487,9 +508,6 @@ h2 {
     padding: 10px 65px;
     text-align: center;
 }
-
-
-
 
 .tm-footer-link {
     color: rgb(255, 255, 255);

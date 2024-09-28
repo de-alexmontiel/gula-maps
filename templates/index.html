@@ -38,11 +38,11 @@
             </a>
             <a href="#contact" class="tm-page-link">
               <i class="fas fa-phone tm-page-link-icon"></i>
-              Contact
+              Contacto
             </a>
           </div>
 
-          <!-- Places Section -->
+          <!-- Places Section (Food) -->
           <div id="food" class="tm-page-content">
             <nav class="tm-black-bg tm-drinks-nav">
               <ul>
@@ -92,19 +92,52 @@
             {% endfor %}
           </div>
 
-          <!-- About Us Page -->
-          <div id="about" class="tm-page-content">
-            <!-- About content -->
+          <!-- About Us (Servicios) Page -->
+          <div id="about" class="tm-page-content" style="display:none;">
+            <div class="tm-black-bg tm-mb-20 tm-about-box-1">
+              <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
+              <div class="tm-list-item tm-list-item-2">
+                <img src="static/img/about-1.png" alt="Servicios" class="tm-list-item-img tm-list-item-img-big">
+                <div class="tm-list-item-text-2">
+                  <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y servicios en tu ciudad.</p>
+                  <p>Consulta restaurantes, cafeterías, bares, y mucho más, todo desde un solo lugar.</p>
+                  <p>Además, ofrecemos servicios de publicidad y promoción para establecimientos.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Special Items Page -->
-          <div id="special" class="tm-page-content">
-            <!-- Special items content -->
+          <!-- Special Items Page (En construcción) -->
+          <div id="special" class="tm-page-content" style="display:none;">
+            <div class="tm-black-bg tm-special-item">
+              <img src="static/img/under-construction.png" alt="En construcción" class="tm-special-item-img">
+              <div class="tm-special-item-description">
+                <h2 class="tm-text-primary tm-special-item-title">En construcción</h2>
+                <p class="tm-special-item-text">Estamos trabajando en algo especial. ¡Pronto habrá más novedades!</p>
+              </div>
+            </div>
           </div>
 
           <!-- Contact Page -->
-          <div id="contact" class="tm-page-content">
-            <!-- Contact form content -->
+          <div id="contact" class="tm-page-content" style="display:none;">
+            <div class="tm-black-bg tm-contact-text-container">
+              <h2 class="tm-text-primary">Contáctanos</h2>
+              <p>Si tienes alguna duda o quieres anunciar tu negocio con nosotros, no dudes en ponerte en contacto.</p>
+            </div>
+            <div class="tm-black-bg tm-contact-form-container tm-align-right">
+              <form action="" method="POST" id="contact-form">
+                <div class="tm-form-group">
+                  <input type="text" name="name" class="tm-form-control" placeholder="Nombre" required autocomplete="name" />
+                </div>
+                <div class="tm-form-group">
+                  <input type="email" name="email" class="tm-form-control" placeholder="Correo Electrónico" required autocomplete="email" />
+                </div>
+                <div class="tm-form-group tm-mb-30">
+                  <textarea rows="6" name="message" class="tm-form-control" placeholder="Mensaje" required></textarea>
+                </div>
+                <button type="submit" class="tm-btn-primary tm-align-right">Enviar</button>
+              </form>
+            </div>
           </div>
 
         </main>
@@ -114,8 +147,7 @@
     <!-- Footer -->
     <footer class="tm-site-footer">
       <p class="tm-black-bg tm-footer-text">
-        Pto el que lo lea | Dev IG: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored"
-          target="_parent">@talegaman</a>
+        Pto el que lo lea | Dev IG: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored" target="_parent">@talegaman</a>
       </p>
     </footer>
   </div>

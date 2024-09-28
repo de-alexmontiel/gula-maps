@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gula Maps</title>
-  
+
   <!-- External Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
@@ -15,46 +15,46 @@
 <body>
   <div class="tm-container">
     <div class="tm-row">
-      
+
       <!-- Sidebar with Navigation -->
       <div class="tm-left">
         <div class="tm-left-inner">
-          
+
           <!-- Site Header -->
           <div class="tm-site-header">
             <i class="fas fa-coffee fa-3x tm-site-logo"></i>
             <h1 class="tm-site-name">Gula Maps</h1>
           </div>
-          
+
           <!-- Navigation Links -->
           <nav class="tm-site-nav">
             <ul class="tm-site-nav-ul">
-                <li class="tm-page-nav-item">
-                    <a href="#food" class="tm-page-link active">
-                        <i class="fas fa-mug-hot tm-page-link-icon"></i>
-                        <span>Lugares de Comida.</span>
-                    </a>
-                </li>
-                <li class="tm-page-nav-item">
-                    <a href="#about" class="tm-page-link">
-                        <i class="fas fa-users tm-page-link-icon"></i>
-                        <span>Servicios</span>
-                    </a>
-                </li>
-                <li class="tm-page-nav-item">
-                    <a href="#special" class="tm-page-link">
-                        <i class="fas fa-glass-martini tm-page-link-icon"></i>
-                        <span>En construcción</span>
-                    </a>
-                </li>
-                <li class="tm-page-nav-item">
-                    <a href="#contact" class="tm-page-link">
-                        <i class="fas fa-comments tm-page-link-icon"></i>
-                        <span>¡Anunciate con nosotros!</span>
-                    </a>
-                </li>
+              <li class="tm-page-nav-item">
+                <a href="#food" class="tm-page-link active">
+                  <i class="fas fa-mug-hot tm-page-link-icon"></i>
+                  <span>Lugares de Comida.</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="#about" class="tm-page-link">
+                  <i class="fas fa-users tm-page-link-icon"></i>
+                  <span>Servicios</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="#special" class="tm-page-link">
+                  <i class="fas fa-glass-martini tm-page-link-icon"></i>
+                  <span>En construcción</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="#contact" class="tm-page-link">
+                  <i class="fas fa-comments tm-page-link-icon"></i>
+                  <span>¡Anunciate con nosotros!</span>
+                </a>
+              </li>
             </ul>
-        </nav>
+          </nav>
         </div>
       </div>
 
@@ -64,22 +64,22 @@
 
           <div class="tm-icon-bar">
             <a href="#food" class="tm-page-link">
-                <i class="fas fa-home tm-page-link-icon"></i>
-                Inicio
+              <i class="fas fa-home tm-page-link-icon"></i>
+              Inicio
             </a>
             <a href="#about" class="tm-page-link">
-                <i class="fas fa-info-circle tm-page-link-icon"></i>
-                Servicios
+              <i class="fas fa-info-circle tm-page-link-icon"></i>
+              Servicios
             </a>
             <a href="#special" class="tm-page-link">
               <i class="fas fa-phone tm-page-link-icon"></i>
               En construcción
-          </a>
-            <a href="#contact" class="tm-page-link">
-                <i class="fas fa-phone tm-page-link-icon"></i>
-                Contact
             </a>
-        </div>
+            <a href="#contact" class="tm-page-link">
+              <i class="fas fa-phone tm-page-link-icon"></i>
+              Contact
+            </a>
+          </div>
 
           <!-- Places Section -->
           <div id="food" class="tm-page-content">
@@ -90,7 +90,7 @@
                 <li><a href="#" class="tm-tab-link" data-id="cafe">Cafeterias</a></li>
               </ul>
             </nav>
-            
+
             <!-- Search Bar -->
             <div class="search-bar">
               <input type="text" id="search-input" placeholder="Buscar por nombre...">
@@ -104,14 +104,15 @@
                 <div class="tm-list-item">
                   <!-- Verificar si hay un icono personalizado -->
                   {% if place['Icono'] is defined %}
-                    <img src="static/img/{{ place['Icono'] }}" alt="Image" class="tm-list-item-img">
+                  <img src="static/img/{{ place['Icono'] }}" alt="Image" class="tm-list-item-img">
                   {% else %}
-                    <img src="static/img/{{ category }}-logo.png" alt="Image" class="tm-list-item-img">
+                  <img src="static/img/{{ category }}-logo.png" alt="Image" class="tm-list-item-img">
                   {% endif %}
                   <div class="tm-black-bg tm-list-item-text">
                     <h3 class="tm-list-item-name">{{ place['Nombre'] }}
                       <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar vía Whatsapp</a>
+                        <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar
+                          vía Whatsapp</a>
 
                       </span>
                     </h3>
@@ -125,7 +126,7 @@
               </div>
             </div>
             {% endfor %}
-            
+
           </div>
 
           <!-- About Us Page -->
@@ -135,7 +136,8 @@
               <div class="tm-list-item tm-list-item-2">
                 <img src="static/img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
                 <div class="tm-list-item-text-2">
-                  <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for your business websites.</p>
+                  <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for your
+                    business websites.</p>
                   <p>You can also use this for your client websites which you get paid for your website services.</p>
                 </div>
               </div>
@@ -166,10 +168,12 @@
             <div class="tm-black-bg tm-contact-form-container tm-align-right">
               <form action="" method="POST" id="contact-form">
                 <div class="tm-form-group">
-                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required autocomplete="Name" />
+                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required
+                    autocomplete="Name" />
                 </div>
                 <div class="tm-form-group">
-                  <input type="email" name="email" class="tm-form-control" placeholder="Email" required autocomplete="Email" />
+                  <input type="email" name="email" class="tm-form-control" placeholder="Email" required
+                    autocomplete="Email" />
                 </div>
                 <div class="tm-form-group tm-mb-30">
                   <textarea rows="6" name="message" class="tm-form-control" placeholder="Message" required></textarea>
@@ -186,7 +190,8 @@
     <!-- Footer -->
     <footer class="tm-site-footer">
       <p class="tm-black-bg tm-footer-text">
-        Pto el que lo lea | Dev IG: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored" target="_parent">@talegaman</a>
+        Pto el que lo lea | Dev IG: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored"
+          target="_parent">@talegaman</a>
       </p>
     </footer>
   </div>
@@ -195,23 +200,35 @@
   <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
   <script>
     // Tab Handling
+    // Función para cambiar entre pestañas dentro de la sección de "Lugares de Comida"
     function openTab(evt, id) {
+      // Ocultar todas las pestañas
       $('.tm-tab-content').hide();
+
+      // Mostrar la pestaña seleccionada
       $('#' + id).show();
+
+      // Cambiar la clase activa en las pestañas
       $('.tm-tab-link').removeClass('active');
       $(evt.currentTarget).addClass('active');
     }
 
+
+
     // Page Initialization
     function initPage() {
-      let pageId = location.hash;
-      if (pageId) {
-        highlightMenu($(`.tm-page-link[href^="${pageId}"]`));
-        showPage($(pageId));
-      } else {
-        pageId = $('.tm-page-link.active').attr('href');
-        showPage($(pageId));
-      }
+      // Ocultar todas las pestañas (restaurantes, bares, cafeterías)
+      $('.tm-tab-content').hide();
+
+      // Mostrar solo la pestaña de restaurantes y marcarla como activa
+      $('#resta').show();
+      $('.tm-tab-link[data-id="resta"]').addClass('active');
+
+      // Ocultar todas las otras páginas secundarias (about, contact, etc.)
+      $('.tm-page-content').hide();
+
+      // Mostrar solo la página de restaurantes
+      $('#food').show();
     }
 
     // Menu Highlight
@@ -221,26 +238,34 @@
     }
 
     // Show Page
+    // Función para mostrar las páginas secundarias (about, contact, etc.)
     function showPage(page) {
+      // Ocultar todas las páginas
       $('.tm-page-content').hide();
+
+      // Mostrar la página seleccionada
       page.show();
     }
-
     // Document Ready
     $(document).ready(function () {
+      // Inicializar la página mostrando solo los restaurantes y ocultando las demás
       initPage();
-      $('.tm-page-link').click(function (event) {
-        if (window.innerWidth > 991) event.preventDefault();
-        highlightMenu($(event.currentTarget));
-        showPage($(event.currentTarget.hash));
-      });
 
-      // Tab Navigation
+      // Manejar la navegación entre pestañas dentro de "Lugares de Comida"
       $('.tm-tab-link').on('click', e => {
         e.preventDefault();
         openTab(e, $(e.currentTarget).data('id'));
       });
 
+      // Manejar la navegación entre páginas (about, contact, etc.)
+      $('.tm-page-link').on('click', function (event) {
+        event.preventDefault();
+        highlightMenu($(this)); // Resaltar la opción seleccionada del menú
+        const targetPage = $(this.hash);
+        showPage(targetPage); // Mostrar la página seleccionada
+      });
+
+      // Manejar la búsqueda filtrada
       $('#search-input').on('input', function () {
         const searchText = $(this).val().toLowerCase();
         $('.tm-list-item').each(function () {

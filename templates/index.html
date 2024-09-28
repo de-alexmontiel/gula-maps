@@ -15,55 +15,16 @@
 <body>
   <div class="tm-container">
     <div class="tm-row">
-
-      <!-- Sidebar with Navigation -->
-      <div class="tm-left">
-        <div class="tm-left-inner">
-
-          <!-- Site Header -->
-          <div class="tm-site-header">
-            <i class="fas fa-coffee fa-3x tm-site-logo"></i>
-            <h1 class="tm-site-name">Gula Maps</h1>
-          </div>
-
-          <!-- Navigation Links -->
-          <nav class="tm-site-nav">
-            <ul class="tm-site-nav-ul">
-              <li class="tm-page-nav-item">
-                <a href="#food" class="tm-page-link active">
-                  <i class="fas fa-mug-hot tm-page-link-icon"></i>
-                  <span>Lugares de Comida.</span>
-                </a>
-              </li>
-              <li class="tm-page-nav-item">
-                <a href="#about" class="tm-page-link">
-                  <i class="fas fa-users tm-page-link-icon"></i>
-                  <span>Servicios</span>
-                </a>
-              </li>
-              <li class="tm-page-nav-item">
-                <a href="#special" class="tm-page-link">
-                  <i class="fas fa-glass-martini tm-page-link-icon"></i>
-                  <span>En construcción</span>
-                </a>
-              </li>
-              <li class="tm-page-nav-item">
-                <a href="#contact" class="tm-page-link">
-                  <i class="fas fa-comments tm-page-link-icon"></i>
-                  <span>¡Anunciate con nosotros!</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-
       <!-- Main Content -->
       <div class="tm-right">
         <main class="tm-main">
+          
+          <!-- Toggle Button for Mobile Menu -->
+          <div class="tm-menu-toggle" id="menu-toggle">&#9776;</div>
 
-          <div class="tm-icon-bar">
-            <a href="#food" class="tm-page-link">
+          <!-- Navigation Bar -->
+          <div class="tm-icon-bar" id="menu">
+            <a href="#food" class="tm-page-link active">
               <i class="fas fa-home tm-page-link-icon"></i>
               Inicio
             </a>
@@ -72,7 +33,7 @@
               Servicios
             </a>
             <a href="#special" class="tm-page-link">
-              <i class="fas fa-phone tm-page-link-icon"></i>
+              <i class="fas fa-exclamation-circle tm-page-link-icon"></i>
               En construcción
             </a>
             <a href="#contact" class="tm-page-link">
@@ -87,7 +48,7 @@
               <ul>
                 <li><a href="#" class="tm-tab-link active" data-id="resta">Restaurantes</a></li>
                 <li><a href="#" class="tm-tab-link" data-id="bar">Bares</a></li>
-                <li><a href="#" class="tm-tab-link" data-id="cafe">Cafeterias</a></li>
+                <li><a href="#" class="tm-tab-link" data-id="cafe">Cafeterías</a></li>
               </ul>
             </nav>
 
@@ -116,8 +77,7 @@
 
                     <!-- Enlace a WhatsApp -->
                     <span class="tm-list-item-price">
-                      <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar
-                        vía Whatsapp</a>
+                      <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar vía Whatsapp</a>
                     </span>
 
                     <!-- Enlace a Google Maps -->
@@ -130,62 +90,21 @@
               </div>
             </div>
             {% endfor %}
-
-
           </div>
 
           <!-- About Us Page -->
           <div id="about" class="tm-page-content">
-            <div class="tm-black-bg tm-mb-20 tm-about-box-1">
-              <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
-              <div class="tm-list-item tm-list-item-2">
-                <img src="static/img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
-                <div class="tm-list-item-text-2">
-                  <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for your
-                    business websites.</p>
-                  <p>You can also use this for your client websites which you get paid for your website services.</p>
-                </div>
-              </div>
-            </div>
+            <!-- About content -->
           </div>
 
           <!-- Special Items Page -->
           <div id="special" class="tm-page-content">
-            <div class="tm-special-items">
-              {% for item in special_items %}
-              <div class="tm-black-bg tm-special-item">
-                <img src="static/img/{{ item['img'] }}" alt="Image">
-                <div class="tm-special-item-description">
-                  <h2 class="tm-text-primary tm-special-item-title">{{ item['title'] }}</h2>
-                  <p class="tm-special-item-text">{{ item['description'] }}</p>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
+            <!-- Special items content -->
           </div>
 
           <!-- Contact Page -->
           <div id="contact" class="tm-page-content">
-            <div class="tm-black-bg tm-contact-text-container">
-              <h2 class="tm-text-primary">Contact Wave</h2>
-              <p>Wave Cafe Template has a video background. You can use this layout for your websites.</p>
-            </div>
-            <div class="tm-black-bg tm-contact-form-container tm-align-right">
-              <form action="" method="POST" id="contact-form">
-                <div class="tm-form-group">
-                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required
-                    autocomplete="Name" />
-                </div>
-                <div class="tm-form-group">
-                  <input type="email" name="email" class="tm-form-control" placeholder="Email" required
-                    autocomplete="Email" />
-                </div>
-                <div class="tm-form-group tm-mb-30">
-                  <textarea rows="6" name="message" class="tm-form-control" placeholder="Message" required></textarea>
-                </div>
-                <button type="submit" class="tm-btn-primary tm-align-right">Submit</button>
-              </form>
-            </div>
+            <!-- Contact form content -->
           </div>
 
         </main>
@@ -204,73 +123,31 @@
   <!-- Scripts -->
   <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
   <script>
-    // Tab Handling
-    // Función para cambiar entre pestañas dentro de la sección de "Lugares de Comida"
-    function openTab(evt, id) {
-      // Ocultar todas las pestañas
-      $('.tm-tab-content').hide();
-
-      // Mostrar la pestaña seleccionada
-      $('#' + id).show();
-
-      // Cambiar la clase activa en las pestañas
-      $('.tm-tab-link').removeClass('active');
-      $(evt.currentTarget).addClass('active');
-    }
-
-
-
-    // Page Initialization
-    function initPage() {
-      // Ocultar todas las pestañas (restaurantes, bares, cafeterías)
-      $('.tm-tab-content').hide();
-
-      // Mostrar solo la pestaña de restaurantes y marcarla como activa
-      $('#resta').show();
-      $('.tm-tab-link[data-id="resta"]').addClass('active');
-
-      // Ocultar todas las otras páginas secundarias (about, contact, etc.)
-      $('.tm-page-content').hide();
-
-      // Mostrar solo la página de restaurantes
-      $('#food').show();
-    }
-
-    // Menu Highlight
-    function highlightMenu(menuItem) {
-      $('.tm-page-link').removeClass('active');
-      menuItem.addClass('active');
-    }
-
-    // Show Page
-    // Función para mostrar las páginas secundarias (about, contact, etc.)
-    function showPage(page) {
-      // Ocultar todas las páginas
-      $('.tm-page-content').hide();
-
-      // Mostrar la página seleccionada
-      page.show();
-    }
     // Document Ready
     $(document).ready(function () {
-      // Inicializar la página mostrando solo los restaurantes y ocultando las demás
+      // Initial page setup
       initPage();
 
-      // Manejar la navegación entre pestañas dentro de "Lugares de Comida"
-      $('.tm-tab-link').on('click', e => {
-        e.preventDefault();
-        openTab(e, $(e.currentTarget).data('id'));
+      // Toggle menu for mobile
+      $('#menu-toggle').on('click', function () {
+        $('#menu').toggleClass('active');
       });
 
-      // Manejar la navegación entre páginas (about, contact, etc.)
+      // Handle page navigation links
       $('.tm-page-link').on('click', function (event) {
         event.preventDefault();
-        highlightMenu($(this)); // Resaltar la opción seleccionada del menú
+        highlightMenu($(this)); // Highlight the selected menu item
         const targetPage = $(this.hash);
-        showPage(targetPage); // Mostrar la página seleccionada
+        showPage(targetPage); // Show the selected page
       });
 
-      // Manejar la búsqueda filtrada
+      // Handle tab navigation within the food section
+      $('.tm-tab-link').on('click', function (event) {
+        event.preventDefault();
+        openTab(event, $(this).data('id'));
+      });
+
+      // Search filtering logic
       $('#search-input').on('input', function () {
         const searchText = $(this).val().toLowerCase();
         $('.tm-list-item').each(function () {
@@ -279,6 +156,36 @@
         });
       });
     });
+
+    function initPage() {
+      // Hide all tab content
+      $('.tm-tab-content').hide();
+      // Show restaurants tab by default
+      $('#resta').show();
+      // Activate the first tab
+      $('.tm-tab-link[data-id="resta"]').addClass('active');
+      // Hide all other pages
+      $('.tm-page-content').hide();
+      // Show the food page
+      $('#food').show();
+    }
+
+    function openTab(evt, id) {
+      $('.tm-tab-content').hide();
+      $('#' + id).show();
+      $('.tm-tab-link').removeClass('active');
+      $(evt.currentTarget).addClass('active');
+    }
+
+    function highlightMenu(menuItem) {
+      $('.tm-page-link').removeClass('active');
+      menuItem.addClass('active');
+    }
+
+    function showPage(page) {
+      $('.tm-page-content').hide();
+      page.show();
+    }
   </script>
 </body>
 

@@ -104,20 +104,24 @@
                 <div class="tm-list-item">
                   <!-- Verificar si hay un icono personalizado -->
                   {% if place['Icono'] is defined %}
-                  <img src="static/img/{{ place['Icono'] }}" alt="Image" class="tm-list-item-img">
+                  <img src="static/img/{{ place['Icono'] }}" alt="Image" class="tm-list-item-logo">
                   {% else %}
-                  <img src="static/img/{{ category }}-logo.png" alt="Image" class="tm-list-item-img">
+                  <img src="static/img/{{ category }}-logo.png" alt="Image" class="tm-list-item-logo">
                   {% endif %}
-                  <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">{{ place['Nombre'] }}
-                      <span class="tm-list-item-price">
-                        <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar
-                          vía Whatsapp</a>
 
-                      </span>
-                    </h3>
+                  <!-- Contenedor del texto y la información del lugar -->
+                  <div class="tm-list-item-text">
+                    <h3 class="tm-list-item-name">{{ place['Nombre'] }}</h3>
                     <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p>
-                    <a href="{{ place['URL del Lugar'] }}">
+
+                    <!-- Enlace a WhatsApp -->
+                    <span class="tm-list-item-price">
+                      <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank">Ordenar
+                        vía Whatsapp</a>
+                    </span>
+
+                    <!-- Enlace a Google Maps -->
+                    <a href="{{ place['URL del Lugar'] }}" target="_blank">
                       <p class="tm-list-item-description">Ver en Google Maps</p>
                     </a>
                   </div>
@@ -126,6 +130,7 @@
               </div>
             </div>
             {% endfor %}
+
 
           </div>
 

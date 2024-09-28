@@ -13,7 +13,8 @@ body {
     /* Evitar desplazamiento horizontal */
     background-image: url('/static/img/nuevofondoweb.png');
     /* Imagen de fondo */
-    background-size: cover; /*100%;*/
+    background-size: cover;
+    /*100%;*/
     /* La imagen cubrirá toda el área */
     background-position: center;
     /* Centrar la imagen */
@@ -22,6 +23,13 @@ body {
     background-attachment: fixed;
     /* Fijar la imagen de fondo */
 }
+
+.tm-list-item:hover {
+    transform: scale(1.1) rotate(2deg); /* Aumenta el tamaño y rota ligeramente */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+  }
+
 /*
 .tm-icon-bar {
     display: flex;
@@ -49,14 +57,17 @@ body {
 */
 .tm-icon-bar {
     display: flex;
-    justify-content: center; /* Centrar íconos */
+    justify-content: center;
+    /* Centrar íconos */
     align-items: center;
     width: 100%;
-    background-color: white; /* Color de fondo opcional */
+    background-color: white;
+    /* Color de fondo opcional */
     padding: 10px 0;
     position: relative;
     z-index: 200;
-    margin-bottom: 20px; /* Ajuste de espacio entre la barra y el contenido */
+    margin-bottom: 20px;
+    /* Ajuste de espacio entre la barra y el contenido */
 }
 
 .tm-icon-bar a {
@@ -66,16 +77,20 @@ body {
     text-decoration: none;
     transition: color 0.3s ease;
     display: flex;
-    align-items: center; /* Alineación de íconos con texto */
+    align-items: center;
+    /* Alineación de íconos con texto */
 }
 
 .tm-icon-bar a i {
-    margin-right: 10px; /* Espacio entre el ícono y el texto */
-    font-size: 1.5rem; /* Tamaño del ícono */
+    margin-right: 10px;
+    /* Espacio entre el ícono y el texto */
+    font-size: 1.5rem;
+    /* Tamaño del ícono */
 }
 
 .tm-icon-bar a:hover {
-    color: rgb(238, 3, 3); /* Cambiar color al pasar el mouse */
+    color: rgb(238, 3, 3);
+    /* Cambiar color al pasar el mouse */
 }
 
 
@@ -119,7 +134,8 @@ h2 {
 /* Estilo de filas con distribución flexible */
 .tm-row {
     display: flex;
-    justify-content: space-between;    /* Espacio entre elementos */
+    justify-content: space-between;
+    /* Espacio entre elementos */
 }
 
 /* Columna izquierda (navegación lateral) */
@@ -163,32 +179,40 @@ h2 {
 
 /* Estilos específicos para la sección de Bares */
 .bars-section .tm-list-item {
-    background-color: #333333; /* Cambia el color de fondo de los bares */
+    background-color: #333333;
+    /* Cambia el color de fondo de los bares */
 }
 
 .bars-section .tm-list-item-text {
-    background-color: #555555; /* Cambia el color de fondo de la caja de texto de los bares */
-    color: #ffffff; /* Cambia el color del texto para que contraste con el fondo */
+    background-color: #555555;
+    /* Cambia el color de fondo de la caja de texto de los bares */
+    color: #ffffff;
+    /* Cambia el color del texto para que contraste con el fondo */
 }
 
 /* Si deseas cambiar también el color del fondo de los enlaces dentro de la sección de Bares */
 .bars-section .tm-list-item a {
-    color: #ffcc00; /* Color de los enlaces dentro de la sección de bares */
+    color: #ffcc00;
+    /* Color de los enlaces dentro de la sección de bares */
 }
 
 /* Estilos específicos para la sección de Cafeterías */
 .cafes-section .tm-list-item {
-    background-color: #5a381d; /* Cambia el color de fondo de las cafeterías */
+    background-color: #5a381d;
+    /* Cambia el color de fondo de las cafeterías */
 }
 
 .cafes-section .tm-list-item-text {
-    background-color: #382512; /* Cambia el color de fondo de la caja de texto de las cafeterías */
-    color: #ffffff; /* Cambia el color del texto para que contraste con el fondo */
+    background-color: #382512;
+    /* Cambia el color de fondo de la caja de texto de las cafeterías */
+    color: #ffffff;
+    /* Cambia el color del texto para que contraste con el fondo */
 }
 
 /* Si deseas cambiar también el color del fondo de los enlaces dentro de la sección de Cafeterías */
 .cafes-section .tm-list-item a {
-    color: #ffcc00; /* Color de los enlaces dentro de la sección de cafeterías */
+    color: #ffcc00;
+    /* Color de los enlaces dentro de la sección de cafeterías */
 }
 
 
@@ -283,8 +307,10 @@ h2 {
 }*/
 .tm-site-nav {
     display: flex;
-    justify-content: center; /* Centrar la navegación */
-    margin-bottom: 20px; /* Espacio entre la barra de íconos y la barra de comidas */
+    justify-content: center;
+    /* Centrar la navegación */
+    margin-bottom: 20px;
+    /* Espacio entre la barra de íconos y la barra de comidas */
 }
 
 .tm-site-nav-ul {
@@ -295,25 +321,31 @@ h2 {
 }
 
 .tm-page-nav-item {
-    margin: 0 15px; /* Espacio entre elementos de la lista */
+    margin: 0 15px;
+    /* Espacio entre elementos de la lista */
 }
 
 .tm-page-link {
     display: flex;
     align-items: center;
-    font-size: 1.2rem; /* Ajustar tamaño de texto */
-    color: black; /* Color del texto */
+    font-size: 1.2rem;
+    /* Ajustar tamaño de texto */
+    color: black;
+    /* Color del texto */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .tm-page-link-icon {
-    margin-right: 10px; /* Espacio entre el ícono y el texto */
-    font-size: 1.5rem; /* Tamaño del ícono */
+    margin-right: 10px;
+    /* Espacio entre el ícono y el texto */
+    font-size: 1.5rem;
+    /* Tamaño del ícono */
 }
 
 .tm-page-link:hover {
-    color: rgb(238, 3, 3); /* Cambiar color al pasar el mouse */
+    color: rgb(238, 3, 3);
+    /* Cambiar color al pasar el mouse */
 }
 
 
@@ -365,73 +397,129 @@ h2 {
     /* Agrega un borde inferior cuando está activo */
 }
 
-/*
-/* Listado de productos con estilo de cuadrícula */
+
 .tm-list-item {
+    /* Establece la posición relativa del elemento para que los elementos hijos puedan posicionarse en relación a él */
+    position: relative;
+
+    /* Agrega un espacio alrededor del contenido del elemento */
+    padding: 8px;
+
+    /* Define un ancho fijo de 240 píxeles para el elemento */
+    width: 240px;
+
+    /* Permite que la altura del elemento se ajuste automáticamente al contenido */
+    height: 240px;  /*auto;*/
+
+    /* Indica que el tamaño del elemento incluye el relleno (padding) y el borde (border) */
+    box-sizing: border-box;
+
+    /* Establece un color de fondo blanco para el elemento */
+    background: #fff;
+
+    /* Aplica bordes redondeados de 8 píxeles al elemento */
+    border-radius: 8px;
+
+    /* Configura el elemento como un contenedor de flexbox con orientación vertical */
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+
+    /* Oculta cualquier desbordamiento del contenido dentro del elemento */
+    overflow: hidden;
+
+    /* Cambia el cursor del mouse a un cursor de puntero al pasar sobre el elemento */
+    cursor: pointer;
+
+    /* Agrega una sombra ligera debajo del elemento */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Agrega un margen de 10 píxeles alrededor del elemento */
+    margin: 10px;
 }
 
-*/
+.tm-list-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
 
-/* este es nuevo inicia*/
+.tm-list-item h3 {
+    margin: 5px;
+    font-size: 1rem;
+    /* Reducir tamaño del título */
+    color: #333;
+}
+
+.tm-list-item p {
+    margin: 4px;
+    /* Reducir margen entre párrafo y título */
+    color: #666;
+    font-size: 0.9rem;
+    /* Reducir tamaño del texto */
+}
+
+/*
+.tm-list-item-logo {
+    width: 40px; /* Ajustar tamaño del logo 
+    height: 40px;
+    margin-bottom: 8px; /* Reducir espacio entre logo y texto 
+}
+*/
+.tm-list-item-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+.tm-list-item-logo {
+    /* Remove fixed width and height 
+    max-width: 100%;
+    height: auto;
+    /* Maintain aspect ratio if necessary 
+    object-fit: contain; /* Or cover, depending on your needs 
+  }
+*/
 .tm-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    /* Ajusta el tamaño mínimo de cada columna y se adapta automáticamente */
+    /* Ajustar columnas automáticamente */
     gap: 20px;
-    /* Espacio entre los elementos */
+    /* Espacio entre las tarjetas */
 }
 
-/* este es nuevo termina*/
-
-
-.tm-list-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #ecd2af;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra opcional */
-}
-/*
-.tm-list-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));    /* Ajusta el tamaño mínimo de cada columna 
-    gap: 20px;    /* Espacio entre elementos 
-    padding: 20px;    /* Opcional: Añadir relleno alrededor de la cuadrícula 
-    width: 90%;    /* Mantén este valor si lo prefieres */
-    /* Elimina el ajuste de altura 
-    height: auto;    /* Ajusta la altura según el contenido 
-
-}*/
 .tm-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
-    width: 80%; /* Reducir el ancho del contenedor */
-    margin: 0 auto; /* Centrar el contenedor horizontalmente */
-    height: auto;
+    width: 80%;
+    margin: 0 auto;
+    /* Centrar el contenedor */
 }
 
+.tm-list-item-2 {
+    align-items: flex-start;
+}
 
-.tm-list-item-2 { align-items: flex-start; } /*{ align-items: flex-start; }*/
+/*{ align-items: flex-start; }*/
 
 
 .tm-list-item-img {
     width: 100%;
     height: auto;
     max-width: 140px;
-    object-fit: cover; /* Esto ajusta la imagen al tamaño sin distorsionarla */
-    margin-bottom: 5px; /* Limitar el tamaño de las imágenes */
+    object-fit: cover;
+    /* Esto ajusta la imagen al tamaño sin distorsionarla */
+    margin-bottom: 5px;
+    /* Limitar el tamaño de las imágenes */
 }
-  
+
 
 /* Texto del producto */
 .tm-list-item-img-big {
@@ -443,9 +531,10 @@ h2 {
 }
 
 .tm-list-item-text {
-    padding: 20px 10px;
-    /* padding: 20px 25px; */
     flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tm-list-item-text-2 {
@@ -461,9 +550,12 @@ h2 {
 
 /* Precio del producto */
 .tm-list-item-price {
-    color: #ffffff;     /* Color del precio */
-    font-size: 14px;    /* Este es un ejemplo del tamaño de fuente */
-    margin-top: 15px; /* Espacio entre el precio y el texto de arriba */
+    color: #ffffff;
+    /* Color del precio */
+    font-size: 14px;
+    /* Este es un ejemplo del tamaño de fuente */
+    margin-top: 15px;
+    /* Espacio entre el precio y el texto de arriba */
 }
 
 /* Pie de página del sitio */
@@ -485,7 +577,8 @@ h2 {
  
 }*/
 .tm-footer-text {
-    position: relative; /* Prevents overlapping */
+    position: relative;
+    /* Prevents overlapping */
     padding: 10px 65px;
     text-align: center;
 }
@@ -671,10 +764,11 @@ h2 {
 
     .tm-right {
         width: 90%;
-        justify-content: flex-end; /* Correct alignment property */
+        justify-content: flex-end;
+        /* Correct alignment property */
     }
-    
-/*
+
+    /*
     .tm-right {
         width: 55%;
     }
@@ -769,7 +863,8 @@ h2 {
 
     .tm-drinks-nav {
         height: auto;
-        margin-top: 80px; /* Ajusta según el tamaño de la barra de íconos */
+        margin-top: 80px;
+        /* Ajusta según el tamaño de la barra de íconos */
     }
 
     .tm-drinks-nav>ul {

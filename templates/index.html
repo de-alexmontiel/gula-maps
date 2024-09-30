@@ -81,24 +81,24 @@
                       {% set rating = place['Rating']|float %}
                       {% set full_stars = rating|int %}
                       {% set has_half_star = (rating - full_stars) >= 0.5 %}
-                      
+
                       <!-- Estrellas completas -->
                       {% for i in range(full_stars) %}
-                        <i class="fas fa-star gold-star"></i>
+                      <i class="fas fa-star gold-star"></i>
                       {% endfor %}
-                      
+
                       <!-- Media estrella si aplica -->
                       {% if has_half_star %}
-                        <i class="fas fa-star-half-alt gold-star"></i>
+                      <i class="fas fa-star-half-alt gold-star"></i>
                       {% endif %}
-                      
+
                       <!-- Estrellas vacías -->
                       {% for i in range(5 - full_stars - (1 if has_half_star else 0)) %}
-                        <i class="far fa-star gold-star"></i>
+                      <i class="far fa-star gold-star"></i>
                       {% endfor %}
                     </span>
-                    
-                    
+
+
                     <span class="tm-list-item-price">
                       <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank"
                         class="whatsapp-link">

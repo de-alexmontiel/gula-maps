@@ -383,7 +383,7 @@ h2 {
 }
 
 .tm-list-item img {
-    max: 100%;
+    width: 100%;
     height: auto;
     border-radius: 4px;
     object-fit: cover;

@@ -6,4 +6,4 @@ credentials.json
 
 # Ignorar otras posibles carpetas o archivos sensibles
 __pycache__/
-*.pyc
+*.pycc

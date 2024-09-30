@@ -1,8 +1,12 @@
 from flask import Flask, render_template
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import os, json
-from oauth2client.service_account import ServiceAccountCredentials
+import os
+import json
+from dotenv import load_dotenv  # Importar la librería
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()  # Esto cargará automáticamente el archivo .env
 
 app = Flask(__name__)
 
@@ -10,9 +14,15 @@ app = Flask(__name__)
 def obtener_datos_google_sheets():
     # Autenticación y conexión con Google Sheets
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    #creds = ServiceAccountCredentials.from_json_keyfile_name('C:/Users/Alejandro P Montiel/Super_menu_paraiso/my_project/credentials.json', scope)
-    creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
 
+    # Obtener las credenciales desde la variable de entorno
+    google_creds_json = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+
+    # Convertir el JSON de la variable de entorno en un diccionario
+    creds_dict = json.loads(google_creds_json)
+
+    # Usar las credenciales del diccionario para autenticar
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
     
     # Abrir la hoja de cálculo y seleccionar la pestaña 'Establecimientos'

@@ -49,18 +49,23 @@ body {
     }
 }
 
+
 /* Enlace de WhatsApp */
 .whatsapp-link {
-    color: #25D366;
-    /* Color original de WhatsApp */
-    text-decoration: none;
-    /* Sin subrayado */
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-    /* Transición suave */
+    color: #25D366 !important; /* Color original de WhatsApp */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transición suave */
+    display: inline-flex; /* Para alinear el ícono y el texto */
+    align-items: center; /* Centra el ícono con el texto */
+}
+
+.whatsapp-link i {
+    font-size: 24px; /* Ajusta el tamaño del ícono */
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
 }
 
 .whatsapp-link:hover {
-    color: #128C7E;
+    color: #128C7E !important; 
     /* Color al pasar el mouse */
     text-decoration: underline;
     /* Subrayado al pasar el mouse */
@@ -68,7 +73,7 @@ body {
 
 /* Enlace de Google */
 .google-link {
-    color: #DB4437;
+    color: #dd0303 !important; 
     /* Color original de Google */
     text-decoration: none;
     /* Sin subrayado */
@@ -77,7 +82,7 @@ body {
 }
 
 .google-link:hover {
-    color: #EA4335;
+    color: #cc1caf !important; 
     /* Color al pasar el mouse */
     text-decoration: underline;
     /* Subrayado al pasar el mouse */
@@ -373,11 +378,12 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     /* Color de fondo blanco */
-    height: auto; /* Permitir ajuste automático */
+    height: 100%; /* Permitir ajuste automático */
+    justify-content: space-between; 
 }
 
 .tm-list-item img {
-    max-width: 100%;
+    max: 100%;
     height: auto;
     border-radius: 4px;
     object-fit: cover;
@@ -461,6 +467,10 @@ h2 {
     flex-direction: column;
     justify-content: center;
     /* Centrar el contenido verticalmente */
+    margin-top: auto; /* Empuja el texto hacia la parte inferior */
+    padding: 10px; /* Opcional: Ajusta el padding para separarlo del borde */
+    background-color: rgba(255, 255, 255, 0.8); /* Ejemplo de fondo semitransparente */
+  
 }
 
 .tm-list-item-text-2 {

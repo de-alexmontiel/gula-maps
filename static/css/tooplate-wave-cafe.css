@@ -1,876 +1,380 @@
 /* Suave comportamiento de desplazamiento en la página */
 html {
     scroll-behavior: smooth;
-}
-
-/* Estilos generales para el cuerpo de la página */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    overflow-x: hidden;
-    /* Evitar desplazamiento horizontal */
-    background-image: url('/static/img/nuevofondoweb.png');
-    /* Imagen de fondo */
-    background-size: cover;
-    /*100%;*/
-    /* La imagen cubrirá toda el área */
-    background-position: center;
-    /* Centrar la imagen */
-    background-repeat: no-repeat;
-    /* Evitar repetición de la imagen */
-    background-attachment: fixed;
-    /* Fijar la imagen de fondo */
-}
-
-.tm-list-item:hover {
-    transform: scale(1.05) rotate(2deg);
-    /* Cambiar tamaño ligeramente */
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    /* Sombra más intensa */
-    background-color: #f0f0f0;
-    /* Fondo al hacer hover */
-}
-
-/* Menu toggle - Hidden by default, visible on mobile */
-.tm-icon-bar {
-    display: none;
-}
-
-.tm-icon-bar.active {
-    display: block;
-}
-
-@media (min-width: 768px) {
-    .tm-icon-bar {
-        display: flex;
-        /* Para mostrar el menú en pantallas grandes */
-    }
-}
-
-
-/* Enlace de WhatsApp */
-.whatsapp-link {
-    color: #25D366 !important; /* Color original de WhatsApp */
-    text-decoration: none; /* Sin subrayado */
-    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transición suave */
-    display: inline-flex; /* Para alinear el ícono y el texto */
-    align-items: center; /* Centra el ícono con el texto */
-}
-
-.whatsapp-link i {
-    font-size: 24px; /* Ajusta el tamaño del ícono */
-    margin-right: 8px; /* Espacio entre el ícono y el texto */
-}
-
-.whatsapp-link:hover {
-    color: #128C7E !important; 
-    /* Color al pasar el mouse */
-    text-decoration: underline;
-    /* Subrayado al pasar el mouse */
-}
-
-/* Enlace de Google */
-.google-link {
-    color: #dd0303 !important; 
-    /* Color original de Google */
-    text-decoration: none;
-    /* Sin subrayado */
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-    /* Transición suave */
-}
-
-.google-link:hover {
-    color: #cc1caf !important; 
-    /* Color al pasar el mouse */
-    text-decoration: underline;
-    /* Subrayado al pasar el mouse */
-}
-.gold-star {
-    color: gold; /* Color dorado */
-    font-size: 20px; /* Ajusta el tamaño según prefieras */
-    margin-right: 2px; /* Espacio entre las estrellas */
   }
   
-
-
-/* Barra de navegación general */
-.tm-icon-bar {
-    display: flex;
-    justify-content: space-around;
-    background-color: #333;
-    padding: 10px 0;
-    list-style: none;
-}
-
-.tm-icon-bar a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-}
-
-.tm-icon-bar a i {
-    margin-right: 10px;
-    /* Espacio entre el ícono y el texto */
-    font-size: 1.5rem;
-    /* Tamaño del ícono */
-}
-
-.tm-icon-bar a:hover {
-    color: rgb(238, 3, 3);
-    /* Cambiar color al pasar el mouse */
-}
-
-
-/* Resetear padding y margin en listas no ordenadas */
-ul {
-    padding: 0;
+  /* Estilos generales para el cuerpo de la página */
+  body {
     margin: 0;
-}
-
-/* Quitar estilo de lista en elementos del menú de navegación */
-nav>ul>li {
-    list-style: none;
-}
-
-/* Estilo general para enlaces */
-a {
+    padding: 0;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    overflow-x: hidden;
+    background-color: #fff8ff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  /* Estilos para enlaces de WhatsApp */
+  .whatsapp-link {
+    color: #25d366 !important;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .whatsapp-link i {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  
+  .whatsapp-link:hover {
+    color: #128c7e !important;
+    text-decoration: underline;
+  }
+  
+  /* Estilos para enlaces de Google */
+  .google-link {
+    color: #dd0303 !important;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+  }
+  
+  .google-link:hover {
+    color: #cc1caf !important;
+    text-decoration: underline;
+  }
+  
+  /* Estilos para barra de búsqueda */
+  input.search-input {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 600px;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+  
+  input.search-input:focus {
+    outline: none;
+    border-color: #f5a623;
+  }
+  
+  /* Estilos generales para enlaces */
+  a {
     color: rgb(16, 179, 51);
-    /* Color para los enlaces */
     text-decoration: none;
     transition: all 0.3s ease;
-    /* Transición suave al hacer hover */
-}
-
-/* Configuración de párrafos */
-p {
+  }
+  
+  /* Configuración de párrafos */
+  p {
     line-height: 1.8;
-    /* Altura de línea aumentada para legibilidad */
     margin-top: 0;
-}
-
-/* Estilo básico para títulos de segundo nivel (h2) */
-h2 {
+  }
+  
+  h2 {
     margin-top: 0;
-}
-
-/* Contenedor general */
-.tm-container {
+  }
+  
+  .tm-container {
     padding: 10px;
-}
-
-/* Estilo de filas con distribución flexible */
-.tm-row {
-    display: flex;
-    justify-content: space-between;
-    /* Espacio entre elementos */
-}
-
-
-
-/* Columna derecha (contenido principal) */
-.tm-right {
-    width: 100%;
-    /* Make sure this complements the width of .tm-left */
-    align-items: center;
-    /* revisar */
-}
-
-/* Fijar la navegación lateral izquierda */
-.tm-left-inner {
-    position: fixed;
-    /* Mantiene la posición fija al hacer scroll */
-}
-
-/* Cabecera del sitio con una imagen */
-.tm-site-header {
-    background: url('/static/img/gulamaps-sin-fondo.png') no-repeat center center;
-    /* Reemplaza con la ruta a tu imagen */
-    background-size: cover;
-    /* Ajusta la imagen para cubrir el área completa */
-    width: 100%;
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* Centra los elementos en horizontal */
-    padding: 0 20px;
-    /* Elimina el color de fondo para mostrar la imagen */
-    color: transparent;
-    /* Oculta el texto si ya no es necesario */
-}
-
-/* Estilos específicos para la sección de Bares */
-.bars-section .tm-list-item {
-    background-color: #333333;
-    /* Cambia el color de fondo de los bares */
-}
-
-.bars-section .tm-list-item-text {
-    background-color: #555555;
-    /* Cambia el color de fondo de la caja de texto de los bares */
-    color: #ffffff;
-    /* Cambia el color del texto para que contraste con el fondo */
-}
-
-/* Si deseas cambiar también el color del fondo de los enlaces dentro de la sección de Bares */
-.bars-section .tm-list-item a {
-    color: #ffcc00;
-    /* Color de los enlaces dentro de la sección de bares */
-}
-
-/* Estilos específicos para la sección de Cafeterías */
-.cafes-section .tm-list-item {
-    background-color: #5a381d;
-    /* Cambia el color de fondo de las cafeterías */
-}
-
-.cafes-section .tm-list-item-text {
-    background-color: #382512;
-    /* Cambia el color de fondo de la caja de texto de las cafeterías */
-    color: #ffffff;
-    /* Cambia el color del texto para que contraste con el fondo */
-}
-
-/* Si deseas cambiar también el color del fondo de los enlaces dentro de la sección de Cafeterías */
-.cafes-section .tm-list-item a {
-    color: #ffcc00;
-    /* Color de los enlaces dentro de la sección de cafeterías */
-}
-
-
-/* Logo del sitio */
-.tm-site-logo {
-    margin-right: 30px;
-}
-
-/* Nombre del sitio */
-.tm-site-name {
-    font-size: 2.2rem;
-    font-style: italic;
-}
-
-/* Menú de navegación del sitio */
-.tm-left-inner {
-    max-width: 200px;
-    width: 20%;
-}
-
-.search-bar {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Barra de Busqueda */
-#search-input {
+  }
+  
+  /* Estilos para lista de elementos 
+  .tm-list-item {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      height: 100%;
+      justify-content: space-between;
+  }*/
+  .tm-list-item {
     padding: 10px;
-    width: 60%;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.tm-site-nav {
-    display: flex;
-    justify-content: center;
-    /* Centrar la navegación */
-    margin-bottom: 20px;
-    /* Espacio entre la barra de íconos y la barra de comidas */
-}
-
-.tm-site-nav-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.tm-page-nav-item {
-    margin: 0 15px;
-    /* Espacio entre elementos de la lista */
-}
-
-.tm-page-link {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    /* Ajustar tamaño de texto */
-    color: black;
-    /* Color del texto */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.tm-page-link-icon {
-    margin-right: 10px;
-    /* Espacio entre el ícono y el texto */
-    font-size: 1.5rem;
-    /* Tamaño del ícono */
-}
-
-.tm-page-link:hover {
-    color: rgb(238, 3, 3);
-    /* Cambiar color al pasar el mouse */
-}
-
-
-/* Fondo negro semitransparente */
-.tm-black-bg {
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Fondo negro con transparencia */
-    color: rgb(238, 240, 112);
-    /* Texto en blanco */
-}
-
-/* Navegación de bebidas */
-.tm-drinks-nav>ul>li {
-    display: inline-block;
-}
-
-/* Los elementos del menú están en línea */
-
-/* Estilo de los enlaces de la barra de bebidas */
-.tm-drinks-nav>ul>li>a {
-    color: white;
-    font-size: 1.2rem;
-    padding-top: 15px;
-    padding-bottom: 5px;
-    border-bottom: 3px solid transparent;
-}
-
-/* Altura de la barra de navegación */
-.tm-drinks-nav {
-    height: 80px;
-}
-
-/* Flexbox para alinear los elementos dentro de la barra de navegación */
-.tm-drinks-nav>ul {
-    display: flex;
-    align-items: center;
-    /* Centra verticalmente los elementos */
-    justify-content: space-around;
-    /* Espacio uniforme entre los elementos */
-    height: 100%;
-}
-
-/* Hover y estado activo en la barra de bebidas */
-.tm-drinks-nav>ul>li a.active,
-.tm-drinks-nav>ul>li a:hover {
-    color: #ec1313;
-    /* Cambia el color del texto al hacer hover o estar activo */
-    border-bottom: 4px solid #ec1313;
-    /* Agrega un borde inferior cuando está activo */
-}
-
-
-/* Contenedor de la tarjeta */
-.tm-list-item {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    /* Cambiado a columna */
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 1px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    margin: auto;
     background-color: #ffffff;
-    /* Color de fondo blanco */
-    height: 100%; /* Permitir ajuste automático */
-    justify-content: space-between; 
-}
-
-.tm-list-item img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  .tm-list-item:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: #f0f0f0;
+  }
+  
+  .tm-list-item img {
     width: 100%;
     height: auto;
     border-radius: 4px;
     object-fit: cover;
-}
-
-.tm-list-item h3 {
+  }
+  
+  .tm-list-item h3 {
     margin: 5px;
     font-size: 1rem;
-    /* Reducir tamaño del título */
     color: #333;
-}
-
-.tm-list-item p {
+  }
+  
+  .tm-list-item p {
     margin: 4px;
-    /* Reducir margen entre párrafo y título */
     color: #666;
     font-size: 0.9rem;
-    /* Reducir tamaño del texto */
-}
-
-/* Sección de la imagen - 50% del alto */
-.tm-list-item-logo {
-    width: 100%;
-    height: 50%;
-    /* Ajustado a 50% del alto total */
-    object-fit: cover;
-    /* Mantener la proporción */
-}
-
-.tm-list {
+  }
+  
+  .tm-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    /* Ajustar columnas automáticamente */
     gap: 20px;
-    /* Espacio entre las tarjetas */
-}
-
-.tm-list-container {
+  }
+  /*
+  .tm-list-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      width: 80%;
+      margin: 0 auto;
+  }*/
+  
+  .tm-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
-    width: 80%;
+    max-width: 1200px; /* Limita el ancho en pantallas grandes */
     margin: 0 auto;
-    /* Centrar el contenedor */
-}
-
-.tm-list-item-2 {
-    align-items: flex-start;
-}
-
-/*{ align-items: flex-start; }*/
-
-
-.tm-list-item-img {
-    width: 100%;
-    height: auto;
-    max-width: 140px;
-    object-fit: cover;
-    /* Esto ajusta la imagen al tamaño sin distorsionarla */
-    margin-bottom: 5px;
-    /* Limitar el tamaño de las imágenes */
-}
-
-
-/* Texto del producto */
-.tm-list-item-img-big {
-    margin-right: 25px;
-    width: 50px;
-    /* 200px */
-    height: 200px;
-    /* 200px */
-}
-
-/* Sección de información - 50% del alto */
-.tm-list-item-text {
+  }
+  
+  .tm-list-item-text {
     padding: 15px;
     height: 50%;
-    /* Ajustado a 50% del alto total */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Centrar el contenido verticalmente */
-    margin-top: auto; /* Empuja el texto hacia la parte inferior */
-    padding: 10px; /* Opcional: Ajusta el padding para separarlo del borde */
-    background-color: rgba(255, 255, 255, 0.8); /* Ejemplo de fondo semitransparente */
+    margin-top: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
   
-}
-
-.tm-list-item-text-2 {
-    flex: 1;
-}
-
-.tm-list-item-name {
+  .tm-list-item-name {
     font-size: 1.2em;
     margin-bottom: 10px;
     font-weight: bold;
-}
-
-.tm-list-item-description,
-.tm-list-item-price {
-    margin: 5px 0;
-    color: #be8212;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.tm-list-item-price a {
-    color: #d9534f;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Precio del producto */
-.tm-list-item-price {
-    color: #ffffff;
-    /* Color del precio */
-    font-size: 14px;
-    /* Este es un ejemplo del tamaño de fuente */
+  }
+  
+  /* Pie de página */
+  .tm-site-footer {
     margin-top: 15px;
-    /* Espacio entre el precio y el texto de arriba */
-}
-
-/* Pie de página del sitio */
-.tm-site-footer {
-    margin-top: 15px;
-}
-
-.tm-footer-text {
-    position: relative;
-    /* Prevents overlapping */
+  }
+  
+  .tm-footer-text {
     padding: 10px 65px;
     text-align: center;
-}
+  }
+  
+  .tm-footer-link {
+    color: rgb(32, 30, 167);
+  }
 
-.tm-footer-link {
-    color: rgb(255, 255, 255);
-}
-
-.tm-tab-content {
+  .tm-page-content {
+    display: none;  /* Asegurarse de que el contenido esté oculto por defecto */
+  }
+  
+  /* Animaciones */
+  .tm-tab-content,
+  .tm-page-content {
     animation: fadeEffect 1s;
-}
-
-.tm-page-content {
-    animation: fadeEffect 1s;
-}
-
-.tm-text-primary {
-    color: rgb(252, 0, 0);
-}
-
-.tm-mb-20 {
-    margin-bottom: 20px;
-}
-
-.tm-mb-30 {
-    margin-bottom: 30px;
-}
-
-.tm-img-right {
-    margin-left: 30px;
-    margin-right: 0;
-}
-
-/* Go from zero to full opacity */
-@keyframes fadeEffect {
+  }
+  
+  @keyframes fadeEffect {
     from {
-        opacity: 0.3;
+      opacity: 0.3;
     }
-
+  
     to {
-        opacity: 1;
+      opacity: 1;
     }
-}
-
-/* About */
-.tm-about-box-1 {
-    padding: 40px 30px 50px 0;
-}
-
-.tm-about-box-2 {
-    padding: 50px 40px 30px;
-}
-
-.tm-about-header {
-    margin-left: 220px;
-}
-
-/* Special */
-.tm-special-items {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -30px -10px 0;
-}
-
-.tm-special-item {
-    max-width: 320px;
-    margin: 30px 10px;
-}
-
-.tm-special-item-title {
-    font-size: 1.4rem;
-}
-
-.tm-special-item-description {
-    padding: 15px 10px;
-}
-
-/* Contact */
-.tm-contact-text-container {
-    padding: 45px 50px;
-    margin-bottom: 20px;
-}
-
-.tm-contact-form-container {
-    max-width: 460px;
-    padding: 40px 50px;
-    box-sizing: border-box;
-}
-
-.tm-form-group {
-    margin-bottom: 25px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-
-.tm-form-control {
+  }
+  
+  /* Formulario */
+  .tm-form-control {
     display: block;
-    box-sizing: border-box;
     width: 100%;
     padding: 15px;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 1rem;
-    line-height: 1.5;
     color: #ffffff;
     background-color: transparent;
-    background-clip: padding-box;
-    border: 0;
     border-bottom: 1px solid rgb(255, 0, 0);
-}
-
-.tm-form-control::-webkit-input-placeholder {
+  }
+  
+  .tm-form-control::-webkit-input-placeholder {
     color: white;
-}
-
-/* Edge */
-.tm-form-control:-ms-input-placeholder {
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .tm-logo-text {
+    margin-left: 10px;
+    /* Espaciado entre la imagen y el texto */
+  }
+  
+  .tm-logo {
+    max-height: 40px;
+    /* Ajusta el tamaño del logo si es necesario */
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Esto distribuye los elementos */
+    align-items: center;
+    /* Alinea verticalmente los elementos en el centro */
+    padding: 10px;
+    /* Añadir un poco de espacio interior */
+    background-color: #fff;
+    /* Color de fondo de la barra */
+  }
+  
+  .tm-logo img {
+    height: 80px;
+    /* Ajusta el tamaño del logo según sea necesario */
+  }
+  
+  .tm-page-nav {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Distribuye los elementos horizontalmente */
+    padding: 0 10px; /* Ajusta el padding según el diseño */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
+    width: 100%; /* Cambiado a 100% para que ocupe todo el ancho */
+    max-width: 1200px; /* Puedes limitar el ancho máximo para pantallas grandes */
+    margin: 0 auto; /* Centra la barra de navegación */
+  }
+  
+  .tm-page-link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+  
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+  }
+  
+  .search-bar input {
+   /* padding: 5px;*/
+    font-size: 16px;
+    border: 1px solid #ccc;
+   /* border-radius: 7px;*/
+    width: 100%; /* Asegura que el input ocupe todo el espacio de la barra */
+    padding: 10px;
+    border-radius: 20px;
+  }
+  
+  .search-bar {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 20px;
+    /*display: inline-block; Ajusta el tamaño al contenido */
+    /* flex-grow: 1;  Permite que el campo de búsqueda ocupe espacio flexible */
+    /* margin-left: 10px;
+      margin-right: 10px;*/
+  }
+  
+  .tm-category-bar {
+    display: flex;
+    justify-content: space-around;
+    /* Distribuye de manera uniforme los botones */
+    align-items: center;
+    /* Alinea verticalmente */
+    padding: 10px;
+    /* Añade espacio interior */
+    list-style-type: none;
+    /* Elimina los puntos de la lista */
+    margin: 0;
+    /* Elimina márgenes */
+  }
+  
+  .tm-category-bar li {
+    margin: 0 10px;
+    /* Añade espacio horizontal entre botones */
+  }
+  /*
+  .tm-category-btn {
+      background-color: rgb(238, 238, 255);
+      /* Cambia a tu color principal 
+      border: none;
+      padding: 10px 20px;
+      /* Tamaño del botón 
+      color: rgb(0, 0, 0);
+      /* Color del texto 
+      font-size: 16px;
+      border-radius: 8px;    /* Esquinas redondeadas 
+      text-decoration: none;
+      /* Elimina el subrayado 
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      /* Transición para hover 
+  }
+  .tm-category-btn {
+      padding: 10px 20px;
+      border-radius: 25px;
+      background-color: #f0f0f0;
+      color: #333;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+  }*/
+  
+  .tm-category-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-right: 10px;
+    text-align: center;
+    background-color: #fafafa;
+    color: #333;
+    border: 2px solid #333;
+  }
+  
+  .tm-category-btn.active {
+    background-color: rgb(231, 59, 165);
     color: white;
-}
-
-/* Internet Explorer 10-11 */
-.tm-form-control::placeholder {
-    color: white;
-}
-
-.tm-btn-primary {
-    color: rgb(0, 0, 0);
-    background-color: white;
-    border: 0;
-    padding: 12px 40px;
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Hover para el botón */
-.tm-btn-primary:hover {
-    color: white;
-    background-color: rgb(255, 0, 0);
-    /* Cambia a azul cuando se hace hover */
-}
-
-/* Estilos responsivos para pantallas medianas (992px a 1130px) */
-.tm-align-right {
-    display: block;
-    margin-left: auto;
-    margin-right: 0;
-}
-
-.tm-mb-30 {
-    margin-bottom: 30px;
-}
-
-/* Ocultar el ícono de menú hamburguesa en pantallas grandes */
-.tm-menu-toggle {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-/* Mostrar el menú hamburguesa en pantallas pequeñas */
-@media (max-width: 768px) {
-    .tm-menu-toggle {
-        display: block;
+  
+    /* background-color: rgb(231, 59, 165);
+      Color para el botón activo */
+  }
+  
+  .tm-category-btn:hover {
+    background-color: rgb(231, 59, 165);
+    /* Color al pasar el cursor */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .tm-list-container {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
-
-    .tm-icon-bar a {
-        display: none;
+  
+    .tm-page-nav {
+      flex-direction: column;
     }
-
-    .tm-icon-bar.active a {
-        display: block;
-        text-align: center;
-        padding: 10px;
+  
+    .search-bar {
+      width: 100%;
+      margin: 10px 0;
     }
-}
-
-
-@media (max-width: 1130px) and (min-width: 992px) {
-    .tm-left-inner {
-        max-width: 380px;
-    }
-
-    .tm-site-name {
-        font-size: 2.6rem;
-    }
-
-    .tm-site-logo {
-        margin-right: 20px;
-    }
-
-    .tm-page-link {
-        width: 100%;
-    }
-
-    .tm-page-link-icon {
-        margin-right: 15px;
-    }
-
-    .tm-left {
-        width: 45%;
-    }
-
-    .tm-right {
-        width: 90%;
-        justify-content: flex-end;
-        /* Correct alignment property */
-    }
-
-    /*
-    .tm-right {
-        width: 55%;
-    }
-        */
-}
-
-
-/* Estilos para pantallas pequeñas (menor a 991px) */
-@media (max-width: 991px) {
-
-    .tm-left,
-    .tm-right {
-        width: 100%;
-        /* Full width on smaller screens */
-    }
-
-    .tm-row {
-        display: block;
-    }
-}
-
-
-@media (max-width: 574px) {
-    .tm-site-nav-ul {
-        display: block;
-    }
-}
-
-/* Diseño responsivo */
-@media (max-width: 768px) {
-    .tm-icon-bar {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .tm-page-link {
-        padding: 10px;
-        font-size: 16px;
-    }
-}
-
-/* Ajuste de la navegación lateral en pantallas pequeñas */
-.tm-left {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .tm-left {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .tm-site-nav ul {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-    }
-
-    .tm-site-nav li {
-        margin: 10px 0;
-    }
-
-    .tm-site-nav a {
-        padding: 10px;
-        font-size: 18px;
-        display: block;
-        width: 100%;
-        background-color: #333;
-        color: white;
-        text-align: center;
-    }
-}
-
-@media (max-width: 550px) and (min-width: 501px) {
-    .tm-list-item-img-big {
-        width: 160px;
-        height: 160px;
-    }
-
-    .tm-about-header {
-        margin-left: 180px;
-    }
-}
-
-@media (max-width: 500px) {
-    .tm-about-header {
-        margin-left: 0;
-    }
-
-    .tm-list-item-2 {
-        flex-direction: column;
-    }
-
-    .tm-about-box-1 {
-        padding-left: 30px;
-    }
-
-    .tm-list-item-img-big {
-        margin-right: 0;
-        margin-bottom: 25px;
-    }
-
-    .tm-img-right {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 479px) {
-    .tm-site-name {
-        font-size: 2.6rem;
-    }
-
-    .tm-site-logo {
-        margin-right: 20px;
-    }
-
-    .tm-list-item {
-        flex-direction: column;
-        margin-top: 40px;
-    }
-
-    .tm-list-item-img {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-
-    .tm-drinks-nav {
-        height: auto;
-        margin-top: 80px;
-        /* Ajusta según el tamaño de la barra de íconos */
-    }
-
-    .tm-drinks-nav>ul {
-        flex-direction: column;
-        padding: 10px;
-        /* 15px */
-    }
-
-    .tm-drinks-nav>ul>li {
-        margin-bottom: 10px;
-    }
-
-    .tm-drinks-nav>ul>li>a {
-        display: block;
-    }
-}
+  }
+  

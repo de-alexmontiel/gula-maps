@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gula Maps</title>
-
   <!-- External Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
@@ -14,181 +13,135 @@
 
 <body>
   <div class="tm-container">
-    <div class="tm-row">
-      <!-- Main Content -->
-      <div class="tm-right">
-        <main class="tm-main">
+    <!-- Main Content -->
+    <main class="tm-main">
+      <!-- Toggle Button for Mobile Menu -->
+      <!-- Navigation Bar -->
+      <nav class="tm-page-nav">
+        <div class="tm-menu-toggle" id="menu-toggle">&#9776;</div>
+        <a href="#food" class="tm-page-link active">
+          <img src="static/img/gulamapslogowhite.png" alt="Gula Maps" class="tm-logo">
+          <span class="tm-logo-text"></span>
+        </a>
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Buscar por nombre...">
+        </div>
+        <a href="#about" class="tm-page-link">
+          <i class="fas fa-info-circle tm-page-link-icon"></i> Servicios </a>
+        <a href="#special" class="tm-page-link">
+          <i class="fas fa-exclamation-circle tm-page-link-icon"></i> En construcción </a>
+        <a href="#contact" class="tm-page-link">
+          <i class="fas fa-phone tm-page-link-icon"></i> Contacto </a>
+      </nav>
 
-          <!-- Toggle Button for Mobile Menu -->
-          <div class="tm-menu-toggle" id="menu-toggle">&#9776;</div>
-
-          <!-- Navigation Bar -->
-          <div class="tm-icon-bar" id="menu">
-            <a href="#food" class="tm-page-link active">
-              <i class="fas fa-home tm-page-link-icon"></i>
-              Inicio
-            </a>
-            <a href="#about" class="tm-page-link">
-              <i class="fas fa-info-circle tm-page-link-icon"></i>
-              Servicios
-            </a>
-            <a href="#special" class="tm-page-link">
-              <i class="fas fa-exclamation-circle tm-page-link-icon"></i>
-              En construcción
-            </a>
-            <a href="#contact" class="tm-page-link">
-              <i class="fas fa-phone tm-page-link-icon"></i>
-              Contacto
-            </a>
-          </div>
-
-          <!-- Places Section (Food) -->
-          <div id="food" class="tm-page-content">
-            <nav class="tm-black-bg tm-drinks-nav">
-              <ul>
-                <li><a href="#" class="tm-tab-link active" data-id="resta">Restaurantes</a></li>
-                <li><a href="#" class="tm-tab-link" data-id="bar">Bares</a></li>
-                <li><a href="#" class="tm-tab-link" data-id="cafe">Cafeterías</a></li>
-              </ul>
-            </nav>
-
-            <!-- Search Bar -->
-            <div class="search-bar">
-              <input type="text" id="search-input" placeholder="Buscar por nombre...">
-            </div>
-
-            <!-- Common Section Template -->
-            {% for category, data in [('resta', restaurants), ('bar', bars), ('cafe', cafes)] %}
-            <div id="{{ category }}" class="tm-tab-content">
-              <div class="tm-list-container">
-                {% for place in data %}
-                <div class="tm-list-item">
-                  <!-- Verificar si hay un icono personalizado -->
-                  {% if place['Icono'] is defined %}
-                  <img src="static/img/{{ place['Icono'] }}" alt="Image" class="tm-list-item-logo">
-                  {% else %}
-                  <img src="static/img/{{ category }}-logo.png" alt="Image" class="tm-list-item-logo">
-                  {% endif %}
-
-                  <!-- Contenedor del texto y la información del lugar -->
-                  <div class="tm-list-item-text">
-                    <h3 class="tm-list-item-name">{{ place['Nombre'] }}</h3>
-                    <!--   <p class="tm-list-item-description">Rating: {{ place['Rating'] }}</p> -->
-
-                    <!-- Mostrar Rating con estrellas -->
-                    <span class="rating">
-                      Rating:
-                      {% set rating = place['Rating']|float %}
-                      {% set full_stars = rating|int %}
-                      {% set has_half_star = (rating - full_stars) >= 0.5 %}
-
-                      <!-- Estrellas completas -->
-                      {% for i in range(full_stars) %}
-                      <i class="fas fa-star gold-star"></i>
-                      {% endfor %}
-
-                      <!-- Media estrella si aplica -->
-                      {% if has_half_star %}
-                      <i class="fas fa-star-half-alt gold-star"></i>
-                      {% endif %}
-
-                      <!-- Estrellas vacías -->
-                      {% for i in range(5 - full_stars - (1 if has_half_star else 0)) %}
-                      <i class="far fa-star gold-star"></i>
-                      {% endfor %}
-                    </span>
-
-
-                    <span class="tm-list-item-price">
-                      <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank"
-                        class="whatsapp-link">
-                        <i class="fab fa-whatsapp"></i> Comunicarte vía WhatsApp
-                      </a>
-                    </span>
-
-                    <!-- Enlace a Google Maps 
-                    <a href="{{ place['URL del Lugar'] }}" target="_blank" class="google-link">
-                      <p class="tm-list-item-description">Ver en Google Maps</p>
-                    </a> -->
-                    <span class="tm-list-item-price">
-                      <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
-                        target="_blank" class="google-link">
-                        <i class="fas fa-map-marker-alt"></i> Ver en Google Maps
-                      </a>
-                    </span>
-
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-
-          <!-- About Us (Servicios) Page -->
-          <div id="about" class="tm-page-content" style="display:none;">
-            <div class="tm-black-bg tm-mb-20 tm-about-box-1">
-              <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
-              <div class="tm-list-item tm-list-item-2">
-                <img src="static/img/about-1.png" alt="Servicios" class="tm-list-item-img tm-list-item-img-big">
-                <div class="tm-list-item-text-2">
-                  <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y
-                    servicios en tu ciudad.</p>
-                  <p>Consulta restaurantes, cafeterías, bares, y mucho más, todo desde un solo lugar.</p>
-                  <p>Además, ofrecemos servicios de publicidad y promoción para establecimientos.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Special Items Page (En construcción) -->
-          <div id="special" class="tm-page-content" style="display:none;">
-            <div class="tm-black-bg tm-special-item">
-              <img src="static/img/under-construction.png" alt="En construcción" class="tm-special-item-img">
-              <div class="tm-special-item-description">
-                <h2 class="tm-text-primary tm-special-item-title">En construcción</h2>
-                <p class="tm-special-item-text">Estamos trabajando en algo especial. ¡Pronto habrá más novedades!</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Page -->
-          <div id="contact" class="tm-page-content" style="display:none;">
-            <div class="tm-black-bg tm-contact-text-container">
-              <h2 class="tm-text-primary">Contáctanos</h2>
-              <p>Si tienes alguna duda o quieres anunciar tu negocio con nosotros, no dudes en ponerte en contacto.</p>
-            </div>
-            <div class="tm-black-bg tm-contact-form-container tm-align-right">
-              <form action="" method="POST" id="contact-form">
-                <div class="tm-form-group">
-                  <input type="text" name="name" class="tm-form-control" placeholder="Nombre" required
-                    autocomplete="name" />
-                </div>
-                <div class="tm-form-group">
-                  <input type="email" name="email" class="tm-form-control" placeholder="Correo Electrónico" required
-                    autocomplete="email" />
-                </div>
-                <div class="tm-form-group tm-mb-30">
-                  <textarea rows="6" name="message" class="tm-form-control" placeholder="Mensaje" required></textarea>
-                </div>
-                <button type="submit" class="tm-btn-primary tm-align-right">Enviar</button>
-              </form>
-            </div>
-          </div>
-
-        </main>
+      <!-- Places Section (Food) -->
+      <div id="food" class="tm-page-content">
+        <!-- Search Bar -->
+        <nav class="tm-black-bg tm-drinks-nav">
+          <ul class="tm-category-bar">
+            <li>
+              <a href="#" class="tm-tab-link tm-category-btn active" data-id="resta">Restaurantes</a>
+            </li>
+            <li>
+              <a href="#" class="tm-tab-link tm-category-btn" data-id="bar">Bares</a>
+            </li>
+            <li>
+              <a href="#" class="tm-tab-link tm-category-btn" data-id="cafe">Cafeterías</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="tm-site-footer">
-      <p class="tm-black-bg tm-footer-text">
-        Pto el que lo lea | Dev IG: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored"
-          target="_parent">@talegaman</a>
-      </p>
-    </footer>
+      <!-- Template for Category Sections -->
+      {% for category, data in [('resta', restaurants), ('bar', bars), ('cafe',cafes)] %}
+      <div id="{{ category }}" class="tm-tab-content">
+        <div class="tm-list-container"> {% for place in data %} <div class="tm-list-item">
+            <!-- Icono del lugar -->
+            <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
+              alt="Image" class="tm-list-item-logo">
+            <!-- Texto y enlaces del lugar -->
+            <div class="tm-list-item-text">
+              <h3 class="tm-list-item-name">{{ place['Nombre'] }}</h3>
+              <span class="rating"> Rating: {% set rating = place['Rating']|float %} {% set full_stars = rating|int %}
+                {% set has_half_star = (rating - full_stars) >= 0.5 %}
+                <!-- Estrellas --> {% for i in range(full_stars) %} <i class="fas fa-star gold-star"></i>{% endfor %} {%
+                if has_half_star %} <i class="fas fa-star-half-alt gold-star"></i>{% endif %} {% for i in range(5 -
+                full_stars - (1 if has_half_star else 0)) %} <i class="far fa-star gold-star"></i>{% endfor %}
+              </span>
+              <!-- Enlace WhatsApp -->
+              <span class="tm-list-item-price">
+                <a href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank"
+                  class="whatsapp-link">
+                  <i class="fab fa-whatsapp"></i> Comunicarte vía WhatsApp </a>
+              </span>
+              <!-- Enlace Google Maps -->
+              <span class="tm-list-item-price">
+                <a href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
+                  target="_blank" class="google-link">
+                  <i class="fas fa-map-marker-alt"></i> Ver en Google Maps </a>
+              </span>
+            </div>
+          </div> {% endfor %} </div>
+      </div> {% endfor %}
   </div>
 
+  <!-- About Us (Servicios) Page -->
+  <div id="about" class="tm-page-content" style="display:none;">
+    <div class="tm-black-bg tm-mb-20 tm-about-box-1">
+      <h2 class="tm-text-primary tm-about-header">Nuestros Servicios</h2>
+      <div class="tm-list-item tm-list-item-2">
+        <img src="static/img/about-1.png" alt="Servicios" class="tm-list-item-img tm-list-item-img-big">
+        <div class="tm-list-item-text-2">
+          <p>En Gula Maps ofrecemos una plataforma completa para explorar los mejores lugares de comida y servicios
+            en
+            tu ciudad.</p>
+          <p>Consulta restaurantes, cafeterías, bares, y mucho más, todo desde un solo lugar.</p>
+          <p>Además, ofrecemos servicios de publicidad y promoción para establecimientos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Special Items Page (En construcción) -->
+  <div id="special" class="tm-page-content" style="display:none;">
+    <div class="tm-black-bg tm-special-item">
+      <img src="static/img/under-construction.png" alt="En construcción" class="tm-special-item-img">
+      <div class="tm-special-item-description">
+        <h2 class="tm-text-primary tm-special-item-title">En construcción</h2>
+        <p class="tm-special-item-text">Estamos trabajando en algo especial. ¡Pronto habrá más novedades!</p>
+      </div>
+    </div>
+  </div>
+  <!-- Contact Page -->
+  <div id="contact" class="tm-page-content" style="display:none;">
+    <div class="tm-black-bg tm-contact-text-container">
+      <h2 class="tm-text-primary">Contáctanos</h2>
+      <p>Si tienes alguna duda o quieres anunciar tu negocio con nosotros, no dudes en ponerte en contacto.</p>
+    </div>
+    <div class="tm-black-bg tm-contact-form-container tm-align-right">
+      <form action="" method="POST" id="contact-form">
+        <div class="tm-form-group">
+          <input type="text" name="name" class="tm-form-control" placeholder="Nombre" required autocomplete="name" />
+        </div>
+        <div class="tm-form-group">
+          <input type="email" name="email" class="tm-form-control" placeholder="Correo Electrónico" required
+            autocomplete="email" />
+        </div>
+        <div class="tm-form-group tm-mb-30">
+          <textarea rows="6" name="message" class="tm-form-control" placeholder="Mensaje" required></textarea>
+        </div>
+        <button type="submit" class="tm-btn-primary tm-align-right">Enviar</button>
+      </form>
+    </div>
+  </div>
+  </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="tm-site-footer">
+    <p class="tm-black-bg tm-footer-text">Gula Maps is in da house | Dev IG: <a
+        href="https://www.instagram.com/talegaman/" class="tm-footer-link">@talegaman</a>
+    </p>
+  </footer>
   <!-- Scripts -->
   <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
   <script>
@@ -202,23 +155,26 @@
         $('#menu').toggleClass('active');
       });
 
-      // Handle page navigation links
+      // Handle page navigation links (Inicio, Servicios, etc.)
       $('.tm-page-link').on('click', function (event) {
         event.preventDefault();
-        highlightMenu($(this)); // Highlight the selected menu item
-        const targetPage = $(this.hash);
-        showPage(targetPage); // Show the selected page
+        const targetPage = $(this.hash); // Get the target page by hash
+        // Highlight the selected menu item
+        highlightMenu($(this));
+        // Show the correct page and hide the rest
+        showPage(targetPage);
       });
 
-      // Handle tab navigation within the food section
+      // Handle tab navigation within the food section (Restaurantes, Bares, Cafeterías)
       $('.tm-tab-link').on('click', function (event) {
         event.preventDefault();
-        openTab(event, $(this).data('id'));
+        openTab($(this).data('id'));
       });
 
       // Search filtering logic
       $('#search-input').on('input', function () {
         const searchText = $(this).val().toLowerCase();
+        // Filter items based on the search text
         $('.tm-list-item').each(function () {
           const placeName = $(this).find('.tm-list-item-name').text().toLowerCase();
           $(this).toggle(placeName.includes(searchText));
@@ -227,34 +183,54 @@
     });
 
     function initPage() {
-      // Hide all tab content
-      $('.tm-tab-content').hide();
-      // Show restaurants tab by default
-      $('#resta').show();
-      // Activate the first tab
-      $('.tm-tab-link[data-id="resta"]').addClass('active');
-      // Hide all other pages
+      // Ocultar todo el contenido de las páginas excepto la página de inicio
       $('.tm-page-content').hide();
-      // Show the food page
-      $('#food').show();
+      $('#food').show(); // Mostrar la sección de Gula Maps
+
+      // Inicializar las pestañas de Gula Maps
+      $('.tm-tab-content').hide(); // Ocultar todas las categorías
+      $('#resta').show(); // Mostrar Restaurantes por defecto
+      $('.tm-tab-link').removeClass('active');
+      $('.tm-tab-link[data-id="resta"]').addClass('active');
     }
 
-    function openTab(evt, id) {
+
+
+    function openTab(id) {
+      // Hide all tab content
       $('.tm-tab-content').hide();
+      // Show the selected tab content
       $('#' + id).show();
+      // Deactivate all tabs and activate the selected one
       $('.tm-tab-link').removeClass('active');
-      $(evt.currentTarget).addClass('active');
+      $('.tm-tab-link[data-id="' + id + '"]').addClass('active');
     }
 
     function highlightMenu(menuItem) {
+      // Deactivate all menu items and activate the selected one
       $('.tm-page-link').removeClass('active');
       menuItem.addClass('active');
     }
 
     function showPage(page) {
-      $('.tm-page-content').hide();
-      page.show();
+      // Oculta todas las secciones
+      $('.tm-page-content').hide(); // Oculta todo el contenido de la página
+      $('.tm-tab-content').hide();  // Oculta las categorías de Gula Maps
+
+      // Verificar si la página actual es "Gula Maps"
+      if (page.attr('id') === 'food') {
+        // Mostrar Gula Maps y la primera categoría (restaurantes)
+        $('#food').show();
+        $('#resta').show();
+        $('.tm-tab-link').removeClass('active');
+        $('.tm-tab-link[data-id="resta"]').addClass('active');
+      } else {
+        // Mostrar la página seleccionada (Servicios, Contacto, etc.)
+        page.show();
+      }
     }
+
+
   </script>
 </body>
 

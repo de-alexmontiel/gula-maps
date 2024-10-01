@@ -379,10 +379,12 @@ h2 {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 /* Hover effect para el botón */
 .tm-dropdown-btn:hover {
-    background-color: #555;   /* Cambiar el color en hover */
-  }
+    background-color: #555;
+    /* Cambiar el color en hover */
+}
 
 .dropdown {
     position: relative;
@@ -394,13 +396,15 @@ h2 {
     position: absolute;
     background-color: white;
     min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px rgba(235, 235, 235, 0.2);
     z-index: 1;
-    top: 60px;  /* Asegura que aparezca debajo del botón */
+    top: 60px;
+    /* Asegura que aparezca debajo del botón */
     text-align: left;
     border-radius: 5px;
-    display: none; /* Oculto por defecto */
-  }
+    display: none;
+    /* Oculto por defecto */
+}
 
 /* Estilo de las opciones en el dropdown */
 .dropdown-options a {
@@ -409,7 +413,7 @@ h2 {
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
-  }
+}
 
 .dropdown-options a:hover {
     background-color: #f1f1f1;
@@ -424,8 +428,15 @@ h2 {
     /* Alinea verticalmente al centro */
     height: 80px;
     /* Altura que puedes ajustar según el banner */
-    background-color: #333;
+    background-color: #ffffff;
     /* Color de fondo para que coincida con el banner */
     position: relative;
     /* Asegura que el dropdown esté alineado con el nav */
+}
+
+.tm-dropdown-btn i {
+    margin-left: 5px;
+    /* Espacio entre el texto y el icono */
+    color: #ffffff;
+    /* Color de la flecha */
 }

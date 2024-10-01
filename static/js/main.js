@@ -80,22 +80,36 @@ function showPage(page) {
   }
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
   const dropdownBtn = document.querySelector('.tm-dropdown-btn');
   const dropdownOptions = document.getElementById('dropdown-options');
+  const dropdownIcon = dropdownBtn.querySelector('i');
 
-  // Toggle visibility of dropdown options on button click
+  // Toggle visibility of dropdown options and arrow direction on button click
   dropdownBtn.addEventListener('click', function () {
     const isVisible = dropdownOptions.style.display === 'block';
+
     dropdownOptions.style.display = isVisible ? 'none' : 'block';
+    dropdownIcon.classList.toggle('fa-chevron-up', !isVisible);
+    dropdownIcon.classList.toggle('fa-chevron-down', isVisible);
   });
 
-  // Close the dropdown if the user clicks outside of it
+  // Close the dropdown and reset the arrow if the user clicks outside of it
   window.addEventListener('click', function (event) {
     if (!event.target.matches('.tm-dropdown-btn')) {
       dropdownOptions.style.display = 'none';
+      dropdownIcon.classList.remove('fa-chevron-up');
+      dropdownIcon.classList.add('fa-chevron-down');
     }
   });
+
+  // Close the dropdown when an option is selected
+  document.querySelectorAll('#dropdown-options a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      dropdownOptions.style.display = 'none';
+      dropdownIcon.classList.remove('fa-chevron-up');
+      dropdownIcon.classList.add('fa-chevron-down');
+    });
+  });
 });
-
-

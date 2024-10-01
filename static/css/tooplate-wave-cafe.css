@@ -245,7 +245,7 @@ h2 {
     /* Alinea verticalmente los elementos en el centro */
     padding: 10px;
     /* Añadir un poco de espacio interior */
-    background-color: #fff;
+    background-color: #fff8ff;
     /* Color de fondo de la barra */
 }
 
@@ -270,7 +270,7 @@ h2 {
     /* Puedes limitar el ancho máximo para pantallas grandes */
     margin: 0 auto;
     /* Centra la barra de navegación */
-    background-color: #fff;
+    background-color: #fff8ff;
 }
 
 .tm-page-link {
@@ -382,7 +382,7 @@ h2 {
 
 /* Hover effect para el botón */
 .tm-dropdown-btn:hover {
-    background-color: #555;
+    background-color: rgb(231, 59, 165);
     /* Cambiar el color en hover */
 }
 
@@ -416,7 +416,7 @@ h2 {
 }
 
 .dropdown-options a:hover {
-    background-color: #f1f1f1;
+    background-color: #ffdef1;
 }
 
 /* Alinear el contenedor del dropdown con flexbox */
@@ -428,7 +428,7 @@ h2 {
     /* Alinea verticalmente al centro */
     height: 80px;
     /* Altura que puedes ajustar según el banner */
-    background-color: #ffffff;
+    background-color: #fff8ff;
     /* Color de fondo para que coincida con el banner */
     position: relative;
     /* Asegura que el dropdown esté alineado con el nav */

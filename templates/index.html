@@ -18,7 +18,7 @@
       <!-- Toggle Button for Mobile Menu -->
       <!-- Navigation Bar -->
       <nav class="tm-page-nav">
-        <div class="tm-menu-toggle" id="menu-toggle">&#9776;</div>
+   
         <a href="#food" class="tm-page-link active">
           <img src="static/img/gulamapslogowhite.png" alt="Gula Maps" class="tm-logo">
           <span class="tm-logo-text"></span>
@@ -34,9 +34,9 @@
           <i class="fas fa-phone tm-page-link-icon"></i> Contacto </a>
       </nav>
 
-      <!-- Places Section (Food) -->
-      <div id="food" class="tm-page-content">
-        <!-- Search Bar -->
+      <!-- Places Section (Food) 
+      <div id="food" class="tm-page-content">-->
+        <!-- Search Bar 
         <nav class="tm-black-bg tm-drinks-nav">
           <ul class="tm-category-bar">
             <li>
@@ -50,7 +50,22 @@
             </li>
           </ul>
         </nav>
+      </div>-->
+
+      <div id="food" class="tm-page-content">
+        <!-- Dropdown Navigation -->
+        <nav class="tm-black-bg tm-drinks-nav">
+          <div class="dropdown">
+            <button class="tm-dropdown-btn">Selecciona una categoría</button>
+            <div id="dropdown-options" class="dropdown-options">  <!-- style="display: none;"> -->
+              <a href="#" class="tm-tab-link" data-id="resta">Restaurantes</a>
+              <a href="#" class="tm-tab-link" data-id="bar">Bares</a>
+              <a href="#" class="tm-tab-link" data-id="cafe">Cafeterías</a>
+            </div>
+          </div>
+        </nav>
       </div>
+      
 
       <!-- Template for Category Sections -->
       {% for category, data in [('resta', restaurants), ('bar', bars), ('cafe',cafes)] %}

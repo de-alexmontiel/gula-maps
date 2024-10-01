@@ -80,3 +80,22 @@ function showPage(page) {
   }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  const dropdownBtn = document.querySelector('.tm-dropdown-btn');
+  const dropdownOptions = document.getElementById('dropdown-options');
+
+  // Toggle visibility of dropdown options on button click
+  dropdownBtn.addEventListener('click', function () {
+    const isVisible = dropdownOptions.style.display === 'block';
+    dropdownOptions.style.display = isVisible ? 'none' : 'block';
+  });
+
+  // Close the dropdown if the user clicks outside of it
+  window.addEventListener('click', function (event) {
+    if (!event.target.matches('.tm-dropdown-btn')) {
+      dropdownOptions.style.display = 'none';
+    }
+  });
+});
+
+

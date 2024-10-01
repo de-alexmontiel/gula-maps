@@ -97,7 +97,7 @@ def conectar_google_sheets(sheet_name):
 # Función principal para iniciar el script
 def main():
     api_key = 'AIzaSyCBJFNQ18_xSW-SwNdywldYZC4Ck0W1FyA'  # Reemplaza con tu clave de API de Google
-    latlon = '21.06903447401927, -89.65619420416222' #'18.40207318673618, -93.20988629430245'  # Coordenadas Ciudad, Ejemplo: Paraiso Tabasco
+    latlon = '25.682809737499124, -100.31794403410137' #'18.40207318673618, -93.20988629430245'  # Coordenadas Ciudad, Ejemplo: Paraiso Tabasco
     radius = 10000  # Radio de búsqueda en metros
     sheet_name = 'Establecimientos'  # Nombre de tu hoja de Google Sheets
 

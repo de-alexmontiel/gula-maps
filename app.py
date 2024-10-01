@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, make_response
+from flask import Flask, render_template, request, make_response
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import os
@@ -64,3 +64,7 @@ def index():
         response.set_cookie('ciudad', selected_city)
     
     return response
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

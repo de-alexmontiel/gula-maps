@@ -90,7 +90,6 @@ def obtener_establecimientos(latlon, radius, api_key, sheet, tipo_lugar):
 # Autenticación con Google Sheets
 def conectar_google_sheets(sheet_name):
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    #creds = ServiceAccountCredentials.from_json_keyfile_name('C:/Users/Alejandro P Montiel/Super_menu_paraiso/my_project/credentials.json', scope)
     creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
     client = gspread.authorize(creds)
     return client.open(sheet_name).sheet1
@@ -98,7 +97,7 @@ def conectar_google_sheets(sheet_name):
 # Función principal para iniciar el script
 def main():
     api_key = 'AIzaSyCBJFNQ18_xSW-SwNdywldYZC4Ck0W1FyA'  # Reemplaza con tu clave de API de Google
-    latlon = '18.40207318673618, -93.20988629430245'  # Coordenadas Ciudad, Ejemplo: Paraiso Tabasco
+    latlon = '21.06903447401927, -89.65619420416222' #'18.40207318673618, -93.20988629430245'  # Coordenadas Ciudad, Ejemplo: Paraiso Tabasco
     radius = 10000  # Radio de búsqueda en metros
     sheet_name = 'Establecimientos'  # Nombre de tu hoja de Google Sheets
 

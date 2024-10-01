@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, make_response
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import os
@@ -39,16 +39,28 @@ def index():
     # Obtener todos los datos de Google Sheets
     data = obtener_datos_google_sheets()
 
+    # Obtener la ciudad seleccionada del parámetro de consulta o la cookie, si no, usar 'Paraíso' por defecto
+    selected_city = request.args.get('ciudad', request.cookies.get('ciudad', 'Paraíso'))
+
     # Filtrar solo los registros con 'Estado del Negocio' igual a 'OPERATIONAL'
     filtered_data = [row for row in data if row.get('Estado del Negocio') == 'OPERATIONAL']
+
+    # Filtrar por ciudad seleccionada
+    filtered_data = [row for row in filtered_data if row.get('Ciudad') == selected_city]
 
     # Separar los datos por tipo (restaurantes, bares, cafeterías)
     restaurants = [row for row in filtered_data if 'Restaurant' in row['Tipos']]
     bars = [row for row in filtered_data if 'Bar' in row['Tipos']]
     cafes = [row for row in filtered_data if 'Cafe' in row['Tipos']]
     
-    # Renderizar la página con los datos filtrados
-    return render_template('index.html', restaurants=restaurants, bars=bars, cafes=cafes)
+    # Obtener la lista de ciudades para el filtro
+    ciudades = sorted(list(set(row['Ciudad'] for row in data)))
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    # Crear una respuesta para permitir el almacenamiento de la ciudad seleccionada en cookies
+    response = make_response(render_template('index.html', restaurants=restaurants, bars=bars, cafes=cafes, ciudades=ciudades, selected_city=selected_city))
+
+    # Si la ciudad seleccionada no está en las cookies, guardarla
+    if 'ciudad' not in request.cookies or request.cookies.get('ciudad') != selected_city:
+        response.set_cookie('ciudad', selected_city)
+    
+    return response

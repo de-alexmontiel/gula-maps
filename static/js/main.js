@@ -3,7 +3,7 @@ $(document).ready(function () {
   // Initial page setup
   initPage();
 
- 
+
 
   // Handle page navigation links (Inicio, Servicios, etc.)
   $('.tm-page-link').on('click', function (event) {
@@ -113,3 +113,48 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+document.getElementById('city-filter-btn').addEventListener('click', function () {
+  document.getElementById('city-splash').style.display = 'flex';
+});
+
+document.getElementById('close-splash').addEventListener('click', function () {
+  document.getElementById('city-splash').style.display = 'none';
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const cityFilterBtn = document.getElementById('city-filter-btn');
+  const splash = document.getElementById('city-splash');
+  const closeSplash = document.getElementById('close-splash');
+  const selectedCity = document.getElementById('selected-city');
+
+  // Abrir el splash al hacer clic en el botón
+  cityFilterBtn.addEventListener('click', function () {
+    splash.style.display = 'flex';
+  });
+
+  // Cerrar el splash
+  closeSplash.addEventListener('click', function () {
+    splash.style.display = 'none';
+  });
+
+  // Mostrar el splash por defecto si no se ha seleccionado una ciudad
+  if (selectedCity.innerText === 'Paraíso') {
+    splash.style.display = 'flex';
+  }
+
+  // Cambiar el icono de la flecha según el estado del splash
+  cityFilterBtn.addEventListener('click', function () {
+    const icon = this.querySelector('i');
+    if (splash.style.display === 'flex') {
+      icon.classList.remove('fa-chevron-down');
+      icon.classList.add('fa-chevron-up');
+    } else {
+      icon.classList.remove('fa-chevron-up');
+      icon.classList.add('fa-chevron-down');
+    }
+  });
+});
+

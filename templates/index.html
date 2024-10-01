@@ -15,17 +15,24 @@
   <div class="tm-container">
     <!-- Main Content -->
     <main class="tm-main">
-      <!-- Toggle Button for Mobile Menu -->
       <!-- Navigation Bar -->
       <nav class="tm-page-nav">
-   
         <a href="#food" class="tm-page-link active">
           <img src="static/img/gulamapslogowhite.png" alt="Gula Maps" class="tm-logo">
           <span class="tm-logo-text"></span>
         </a>
+
+        <!-- Botón que muestra la ciudad seleccionada -->
+        <button id="city-filter-btn" class="city-filter-btn">
+          <span id="selected-city">{{ selected_city }}</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+
         <div class="search-bar">
           <input type="text" id="search-input" placeholder="Buscar por nombre...">
         </div>
+
+
         <a href="#about" class="tm-page-link">
           <i class="fas fa-info-circle tm-page-link-icon"></i> Servicios </a>
         <a href="#special" class="tm-page-link">
@@ -33,14 +40,12 @@
         <a href="#contact" class="tm-page-link">
           <i class="fas fa-phone tm-page-link-icon"></i> Contacto </a>
       </nav>
-
-
       <div id="food" class="tm-page-content">
         <!-- Dropdown Navigation -->
         <nav class="tm-black-bg tm-drinks-nav">
           <div class="dropdown">
-            <button class="tm-dropdown-btn">Selecciona una categoría <i class="fas fa-chevron-down"></i>  </button>
-            <div id="dropdown-options" class="dropdown-options" style="display: none;"> 
+            <button class="tm-dropdown-btn">Selecciona una categoría <i class="fas fa-chevron-down"></i> </button>
+            <div id="dropdown-options" class="dropdown-options" style="display: none;">
               <a href="#" class="tm-tab-link" data-id="resta">Restaurantes</a>
               <a href="#" class="tm-tab-link" data-id="bar">Bares</a>
               <a href="#" class="tm-tab-link" data-id="cafe">Cafeterías</a>
@@ -48,7 +53,20 @@
           </div>
         </nav>
       </div>
-      
+
+      <!-- Splash Modal for City Selection -->
+      <div id="city-splash" class="city-splash">
+        <div class="city-splash-content">
+          <h2>Selecciona una ciudad</h2>
+          <ul id="city-list">
+            {% for ciudad in ciudades %}
+            <li><a href="/?ciudad={{ ciudad }}">{{ ciudad }}</a></li>
+            {% endfor %}
+          </ul>
+          <button id="close-splash">Cerrar</button>
+        </div>
+      </div>
+
 
       <!-- Template for Category Sections -->
       {% for category, data in [('resta', restaurants), ('bar', bars), ('cafe',cafes)] %}

@@ -296,8 +296,8 @@ html {
   
   .tm-category-bar {
     display: flex;
-    justify-content: space-around;
-    /* Distribuye de manera uniforme los botones */
+    justify-content: space-evenly;
+    /*Distribuye de manera uniforme los botones */
     align-items: center;
     /* Alinea verticalmente */
     padding: 10px;
@@ -311,35 +311,9 @@ html {
   .tm-category-bar li {
     margin: 0 10px;
     /* Añade espacio horizontal entre botones */
-  }
-  /*
-  .tm-category-btn {
-      background-color: rgb(238, 238, 255);
-      /* Cambia a tu color principal 
-      border: none;
-      padding: 10px 20px;
-      /* Tamaño del botón 
-      color: rgb(0, 0, 0);
-      /* Color del texto 
-      font-size: 16px;
-      border-radius: 8px;    /* Esquinas redondeadas 
-      text-decoration: none;
-      /* Elimina el subrayado 
-      display: inline-block;
-      transition: background-color 0.3s ease;
-      /* Transición para hover 
-  }
-  .tm-category-btn {
-      padding: 10px 20px;
-      border-radius: 25px;
-      background-color: #f0f0f0;
-      color: #333;
-      font-size: 1rem;
-      text-transform: uppercase;
-      transition: background-color 0.3s ease;
-  }*/
-  
-  .tm-category-btn {
+}
+
+.tm-category-btn {
     display: inline-block;
     padding: 10px 20px;
     border-radius: 20px;

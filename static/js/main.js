@@ -130,6 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeSplash = document.getElementById('close-splash');
   const selectedCity = document.getElementById('selected-city');
 
+  // Abrir el splash solo si no hay una ciudad seleccionada (o cuando el botón es presionado)
+  let cityFromCookie = getCookie('ciudad'); // Obtener ciudad de la cookie
+  if (!cityFromCookie) {
+    splash.style.display = 'flex';
+  }
+
   // Abrir el splash al hacer clic en el botón
   cityFilterBtn.addEventListener('click', function () {
     splash.style.display = 'flex';
@@ -139,11 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
   closeSplash.addEventListener('click', function () {
     splash.style.display = 'none';
   });
-
-  // Mostrar el splash por defecto si no se ha seleccionado una ciudad
-  if (selectedCity.innerText === 'Paraíso') {
-    splash.style.display = 'flex';
-  }
 
   // Cambiar el icono de la flecha según el estado del splash
   cityFilterBtn.addEventListener('click', function () {
@@ -156,5 +157,14 @@ document.addEventListener('DOMContentLoaded', function () {
       icon.classList.add('fa-chevron-down');
     }
   });
-});
 
+  // Función para obtener el valor de una cookie por su nombre
+  function getCookie(name) {
+    let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (match) {
+      return match[2];
+    } else {
+      return null;
+    }
+  }
+});

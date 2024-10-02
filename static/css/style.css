@@ -441,16 +441,24 @@ h2 {
     /* Color de la flecha */
 }
 
+.tm-dropdown-btn .fa-chevron-down {
+    margin-left: 10px;  /* Ajusta el margen entre el texto y la flecha */
+}
+
 .city-filter-btn {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 10px;
+    background-color: #fff8ff;
+    border: 2px;
+    padding: 8px 12px;  /* Reduce el padding general del botón */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 200px;
+    width: auto;
     cursor: pointer;
     font-size: 16px;
+}
+
+.tm-dropdown-btn span {
+    margin-left: 10px;  /* Espacio mínimo entre el icono de la ciudad y el texto */
 }
 
 .city-splash {
@@ -500,5 +508,5 @@ h2 {
 
 .fas.fa-chevron-down,
 .fas.fa-chevron-up {
-    margin-left: 10px;
+    margin-left: 5px;
 }

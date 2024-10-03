@@ -8,7 +8,7 @@ from dotenv import load_dotenv  # Importar la librería
 # Cargar variables de entorno desde el archivo .env
 load_dotenv()  # Esto cargará automáticamente el archivo .env
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 # Función para conectar a Google Sheets y obtener datos
 def obtener_datos_google_sheets():

@@ -547,3 +547,29 @@ h2 {
     color: #000000;  /* Color dorado (si no está ya definido) */
 }
 
+/* Efecto hover para .tm-page-link */
+.tm-page-link:hover {
+    background-color: #ffffff; /* Cambia esto por el color que desees */
+    color: rgb(231, 59, 165); /* Cambia el color del texto también si lo deseas */
+    transition: background-color 0.3s ease; /* Suaviza el cambio */
+}
+
+/* Efecto hover para el botón */
+#city-filter-btn:hover {
+    background-color: #f0f0f0; /* Cambia esto al color que desees al hacer hover */
+    color: rgb(231, 59, 165); /* Cambia el color del texto al hacer hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover para los iconos dentro del botón */
+#city-filter-btn:hover i {
+    color: rgb(231, 59, 165); /* Cambia el color de los iconos al hacer hover */
+    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+/* Efecto hover para el texto (span) dentro del botón */
+#city-filter-btn:hover #selected-city {
+    color: rgb(231, 59, 165); /* Cambia el color del texto del span al hacer hover */
+    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+

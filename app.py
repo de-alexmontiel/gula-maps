@@ -42,11 +42,21 @@ def index():
     # Obtener la ciudad seleccionada del parámetro de consulta o la cookie, si no, usar 'Paraíso' por defecto
     selected_city = request.args.get('ciudad', request.cookies.get('ciudad', 'Paraíso'))
 
+    # Obtener el término de búsqueda de palabra clave o tipo de comida
+    search_query = request.args.get('search', '').lower()  # Convertir a minúsculas para búsqueda insensible a mayúsculas
+
     # Filtrar solo los registros con 'Estado del Negocio' igual a 'OPERATIONAL'
     filtered_data = [row for row in data if row.get('Estado del Negocio') == 'OPERATIONAL']
 
     # Filtrar por ciudad seleccionada
     filtered_data = [row for row in filtered_data if row.get('Ciudad') == selected_city]
+
+    # Filtrar por palabras clave si existe una búsqueda
+    if search_query:
+        filtered_data = [
+            row for row in filtered_data 
+            if search_query in row.get('Tipos', '').lower() or search_query in row.get('Palabras_Clave', '').lower() or search_query in row.get('Tipo_comida', '').lower()
+        ]
 
     # Separar los datos por tipo (restaurantes, bares, cafeterías)
     restaurants = [row for row in filtered_data if 'Restaurant' in row['Tipos']]

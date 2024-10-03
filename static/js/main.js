@@ -3,7 +3,6 @@ $(document).ready(function () {
   // Initial page setup
   initPage();
 
-
   // Handle page navigation links (Inicio, Servicios, etc.)
   $('.tm-page-link').on('click', function (event) {
     event.preventDefault();
@@ -20,23 +19,46 @@ $(document).ready(function () {
     openTab($(this).data('id'));
   });
 
-  // Search filtering logic (Modificado para buscar en todas las categorías)
+  // Manejar el clic en el botón de filtro
+  $('.filter-btn').on('click', function () {
+    const filterKeyword = $(this).data('filter').toLowerCase();
+
+    // Mostrar todas las categorías
+    $('.tm-tab-content').show();
+
+    // Filtrar elementos por la palabra clave seleccionada
+    $('.tm-list-item').each(function () {
+      const placeKeywords = $(this).data('keywords').toLowerCase(); // Usamos los data attributes para palabras clave
+      $(this).toggle(placeKeywords.includes(filterKeyword)); // Mostrar u ocultar según la palabra clave
+    });
+  });
+
+  // Search filtering logic (para todas las categorías)
   $('#search-input').on('input', function () {
     const searchText = $(this).val().toLowerCase();
-    // Filter items across all categories based on the search text
+
+    // Si el input de búsqueda no está vacío, mostrar todas las categorías
+    if (searchText !== "") {
+      $('.tm-tab-content').show();  // Muestra todas las categorías
+    }
+
+    // Filtrar elementos en todas las categorías por nombre, tipo o palabras clave
     $('.tm-list-item').each(function () {
       const placeName = $(this).find('.tm-list-item-name').text().toLowerCase();
-      $(this).toggle(placeName.includes(searchText));
+      const placeTypes = $(this).data('types').toLowerCase();  // Usamos los data attributes para tipos
+      const placeKeywords = $(this).data('keywords').toLowerCase();  // Usamos los data attributes para palabras clave
+
+      // Mostrar el elemento si coincide con el nombre, tipo de comida o palabra clave
+      $(this).toggle(
+        placeName.includes(searchText) || placeTypes.includes(searchText) || placeKeywords.includes(searchText)
+      );
     });
 
-    // Si el input de búsqueda está vacío, mostrar la categoría seleccionada
+    // Si la búsqueda está vacía, mostrar solo la categoría seleccionada
     if (searchText === "") {
       const activeTabId = $('.tm-tab-link.active').data('id');
-      $('.tm-tab-content').hide(); // Oculta todas las categorías
-      $('#' + activeTabId).show(); // Muestra la categoría activa
-    } else {
-      // Si se está buscando algo, mostrar todos los elementos que coinciden con el texto
-      $('.tm-tab-content').show(); // Mostrar todas las categorías para la búsqueda
+      $('.tm-tab-content').hide();  // Oculta todas las categorías
+      $('#' + activeTabId).show();  // Muestra solo la categoría activa
     }
   });
 });
@@ -177,4 +199,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
 

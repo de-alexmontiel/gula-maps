@@ -4,7 +4,6 @@ $(document).ready(function () {
   initPage();
 
 
-
   // Handle page navigation links (Inicio, Servicios, etc.)
   $('.tm-page-link').on('click', function (event) {
     event.preventDefault();
@@ -21,14 +20,24 @@ $(document).ready(function () {
     openTab($(this).data('id'));
   });
 
-  // Search filtering logic
+  // Search filtering logic (Modificado para buscar en todas las categorías)
   $('#search-input').on('input', function () {
     const searchText = $(this).val().toLowerCase();
-    // Filter items based on the search text
+    // Filter items across all categories based on the search text
     $('.tm-list-item').each(function () {
       const placeName = $(this).find('.tm-list-item-name').text().toLowerCase();
       $(this).toggle(placeName.includes(searchText));
     });
+
+    // Si el input de búsqueda está vacío, mostrar la categoría seleccionada
+    if (searchText === "") {
+      const activeTabId = $('.tm-tab-link.active').data('id');
+      $('.tm-tab-content').hide(); // Oculta todas las categorías
+      $('#' + activeTabId).show(); // Muestra la categoría activa
+    } else {
+      // Si se está buscando algo, mostrar todos los elementos que coinciden con el texto
+      $('.tm-tab-content').show(); // Mostrar todas las categorías para la búsqueda
+    }
   });
 });
 
@@ -168,3 +177,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+

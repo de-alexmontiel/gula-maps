@@ -84,13 +84,12 @@
                             <!-- Enlace WhatsApp -->
                             <span class="tm-list-item-price"> <a
                                     href="https://wa.me/{{ place['Teléfono']|string|replace(' ', '') }}" target="_blank"
-                                    class="whatsapp-link"> <i class="fab fa-whatsapp"></i> Comunicarte vía WhatsApp </a>
+                                    class="whatsapp-link"> <i class="fab fa-whatsapp"></i> Envía un mensaje </a>
                             </span>
                             <!-- Enlace Google Maps -->
                             <span class="tm-list-item-price"> <a
                                     href="https://www.google.com/maps/search/?api=1&query={{ place['Dirección']|urlencode }}"
-                                    target="_blank" class="google-link"> <i class="fas fa-map-marker-alt"></i> Ver en
-                                    Google Maps </a> </span>
+                                    target="_blank" class="google-link"> <i class="fas fa-map-marker-alt"></i> Ubicación en Maps </a> </span>
                         </div>
                     </div> {% endfor %}
                 </div>

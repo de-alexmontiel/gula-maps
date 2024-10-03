@@ -24,12 +24,15 @@ body {
     transition: color 0.3s ease, text-decoration 0.3s ease;
     display: inline-flex;
     align-items: center;
+    font-size: 15px; /* Cambia el tamaño de fuente según lo que necesites */
 }
 
 .whatsapp-link i {
     font-size: 24px;
     margin-right: 8px;
+    color: #25D366; /* Color verde típico de WhatsApp */
 }
+
 
 .whatsapp-link:hover {
     color: #128c7e !important;
@@ -38,9 +41,14 @@ body {
 
 /* Estilos para enlaces de Google */
 .google-link {
-    color: #dd0303 !important;
+    font-size: 15px;
+    color: #4285F4!important;
     text-decoration: none;
     transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+.google-link i {
+    font-size: 24px; /* Cambia este valor para ajustar el tamaño del ícono */
+    color: #4285F4; /* Color azul típico de Google Maps */
 }
 
 .google-link:hover {
@@ -112,11 +120,14 @@ h2 {
 }
 
 .tm-list-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    object-fit: cover;
+    max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
+    max-height: 150px; /* Ajusta esta altura máxima según lo que necesites */
+    width: auto; /* Mantiene la proporción de las imágenes */
+    height: auto; /* Mantiene la proporción de las imágenes */
+    object-fit: contain; /* Asegura que las imágenes se ajusten sin deformarse */
+    margin: auto; /* Centra las imágenes dentro de su contenedor */
 }
+
 
 .tm-list-item h3 {
     margin: 5px;
@@ -233,8 +244,18 @@ h2 {
 }
 
 .tm-logo {
-    max-height: 40px;
-    /* Ajusta el tamaño del logo si es necesario */
+    height: 40px;  /* Definir una altura consistente para el contenedor del logo */
+    width: auto;  /* Permitir que el ancho se ajuste automáticamente */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra la imagen dentro del contenedor */
+    overflow: hidden; /* Esconde cualquier parte del logo que exceda el tamaño */
+}
+
+.tm-logo img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Asegura que la imagen mantenga su proporción */
 }
 
 .navbar {
@@ -249,10 +270,7 @@ h2 {
     /* Color de fondo de la barra */
 }
 
-.tm-logo img {
-    height: 80px;
-    /* Ajusta el tamaño del logo según sea necesario */
-}
+
 
 .tm-page-nav {
     display: flex;
@@ -510,3 +528,13 @@ h2 {
 .fas.fa-chevron-up {
     margin-left: 5px;
 }
+
+.gold-star {
+    color: #FFD700; /* Dorado */
+}
+
+.rating {
+    font-size: 15px; /* Ajusta el tamaño de la letra según sea necesario */
+    color: #000000;  /* Color dorado (si no está ya definido) */
+}
+

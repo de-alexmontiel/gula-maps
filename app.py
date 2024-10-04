@@ -18,6 +18,10 @@ def obtener_datos_google_sheets():
     # Obtener las credenciales desde la variable de entorno
     google_creds_json = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
+    if not google_creds_json:
+        print("GOOGLE_APPLICATION_CREDENTIALS no está configurada.")
+
+
     # Convertir el JSON de la variable de entorno en un diccionario
     creds_dict = json.loads(google_creds_json)
 

@@ -19,34 +19,20 @@ $(document).ready(function () {
     openTab($(this).data('id'));
   });
 
-  // Manejar el clic en el botón de filtro
-  $('.filter-btn').on('click', function () {
-    const filterKeyword = $(this).data('filter').toLowerCase();
-
-    // Mostrar todas las categorías
-    $('.tm-tab-content').show();
-
-    // Filtrar elementos por la palabra clave seleccionada
-    $('.tm-list-item').each(function () {
-      const placeKeywords = $(this).data('keywords').toLowerCase(); // Usamos los data attributes para palabras clave
-      $(this).toggle(placeKeywords.includes(filterKeyword)); // Mostrar u ocultar según la palabra clave
-    });
-  });
-
   // Search filtering logic (para todas las categorías)
   $('#search-input').on('input', function () {
     const searchText = $(this).val().toLowerCase();
 
-    // Si el input de búsqueda no está vacío, mostrar todas las categorías
+    // Mostrar todas las categorías cuando hay texto en la barra de búsqueda
     if (searchText !== "") {
-      $('.tm-tab-content').show();  // Muestra todas las categorías
+      $('.tm-tab-content').show(); // Muestra todas las categorías
     }
 
     // Filtrar elementos en todas las categorías por nombre, tipo o palabras clave
     $('.tm-list-item').each(function () {
       const placeName = $(this).find('.tm-list-item-name').text().toLowerCase();
-      const placeTypes = $(this).data('types').toLowerCase();  // Usamos los data attributes para tipos
-      const placeKeywords = $(this).data('keywords').toLowerCase();  // Usamos los data attributes para palabras clave
+      const placeTypes = $(this).data('types') ? $(this).data('types').toLowerCase() : '';
+      const placeKeywords = $(this).data('keywords') ? $(this).data('keywords').toLowerCase() : '';
 
       // Mostrar el elemento si coincide con el nombre, tipo de comida o palabra clave
       $(this).toggle(
@@ -61,6 +47,38 @@ $(document).ready(function () {
       $('#' + activeTabId).show();  // Muestra solo la categoría activa
     }
   });
+
+  // Manejar el clic en el botón de filtro de ciudad
+  $('#city-filter-btn').on('click', function () {
+    document.getElementById('city-splash').style.display = 'flex';
+  });
+
+  // Cerrar el splash de ciudad
+  $('#close-splash').on('click', function () {
+    document.getElementById('city-splash').style.display = 'none';
+  });
+
+  // Manejar el dropdown de categorías (Restaurantes, Bares, Cafeterías)
+  const dropdownBtn = document.querySelector('.tm-dropdown-btn');
+  const dropdownOptions = document.getElementById('dropdown-options');
+  const dropdownIcon = dropdownBtn.querySelector('i');
+
+  // Toggle visibility of dropdown options and arrow direction on button click
+  dropdownBtn.addEventListener('click', function () {
+    const isVisible = dropdownOptions.style.display === 'block';
+    dropdownOptions.style.display = isVisible ? 'none' : 'block';
+    dropdownIcon.classList.toggle('fa-chevron-up', !isVisible);
+    dropdownIcon.classList.toggle('fa-chevron-down', isVisible);
+  });
+
+  // Close the dropdown when an option is selected
+  document.querySelectorAll('#dropdown-options a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      dropdownOptions.style.display = 'none';
+      dropdownIcon.classList.remove('fa-chevron-up');
+      dropdownIcon.classList.add('fa-chevron-down');
+    });
+  });
 });
 
 function initPage() {
@@ -74,8 +92,6 @@ function initPage() {
   $('.tm-tab-link').removeClass('active');
   $('.tm-tab-link[data-id="resta"]').addClass('active');
 }
-
-
 
 function openTab(id) {
   // Hide all tab content
@@ -94,7 +110,7 @@ function highlightMenu(menuItem) {
 }
 
 function showPage(page) {
-  // Oculta todas las secciones
+  // Ocultar todas las secciones
   $('.tm-page-content').hide(); // Oculta todo el contenido de la página
   $('.tm-tab-content').hide();  // Oculta las categorías de Gula Maps
 
@@ -110,94 +126,3 @@ function showPage(page) {
     page.show();
   }
 }
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const dropdownBtn = document.querySelector('.tm-dropdown-btn');
-  const dropdownOptions = document.getElementById('dropdown-options');
-  const dropdownIcon = dropdownBtn.querySelector('i');
-
-  // Toggle visibility of dropdown options and arrow direction on button click
-  dropdownBtn.addEventListener('click', function () {
-    const isVisible = dropdownOptions.style.display === 'block';
-
-    dropdownOptions.style.display = isVisible ? 'none' : 'block';
-    dropdownIcon.classList.toggle('fa-chevron-up', !isVisible);
-    dropdownIcon.classList.toggle('fa-chevron-down', isVisible);
-  });
-
-  // Close the dropdown and reset the arrow if the user clicks outside of it
-  window.addEventListener('click', function (event) {
-    if (!event.target.matches('.tm-dropdown-btn')) {
-      dropdownOptions.style.display = 'none';
-      dropdownIcon.classList.remove('fa-chevron-up');
-      dropdownIcon.classList.add('fa-chevron-down');
-    }
-  });
-
-  // Close the dropdown when an option is selected
-  document.querySelectorAll('#dropdown-options a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      dropdownOptions.style.display = 'none';
-      dropdownIcon.classList.remove('fa-chevron-up');
-      dropdownIcon.classList.add('fa-chevron-down');
-    });
-  });
-});
-
-
-document.getElementById('city-filter-btn').addEventListener('click', function () {
-  document.getElementById('city-splash').style.display = 'flex';
-});
-
-document.getElementById('close-splash').addEventListener('click', function () {
-  document.getElementById('city-splash').style.display = 'none';
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const cityFilterBtn = document.getElementById('city-filter-btn');
-  const splash = document.getElementById('city-splash');
-  const closeSplash = document.getElementById('close-splash');
-  const selectedCity = document.getElementById('selected-city');
-
-  // Abrir el splash solo si no hay una ciudad seleccionada (o cuando el botón es presionado)
-  let cityFromCookie = getCookie('ciudad'); // Obtener ciudad de la cookie
-  if (!cityFromCookie) {
-    splash.style.display = 'flex';
-  }
-
-  // Abrir el splash al hacer clic en el botón
-  cityFilterBtn.addEventListener('click', function () {
-    splash.style.display = 'flex';
-  });
-
-  // Cerrar el splash
-  closeSplash.addEventListener('click', function () {
-    splash.style.display = 'none';
-  });
-
-  // Cambiar el icono de la flecha según el estado del splash
-  cityFilterBtn.addEventListener('click', function () {
-    const icon = this.querySelector('i');
-    if (splash.style.display === 'flex') {
-      icon.classList.remove('fa-chevron-down');
-      icon.classList.add('fa-chevron-up');
-    } else {
-      icon.classList.remove('fa-chevron-up');
-      icon.classList.add('fa-chevron-down');
-    }
-  });
-
-  // Función para obtener el valor de una cookie por su nombre
-  function getCookie(name) {
-    let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    if (match) {
-      return match[2];
-    } else {
-      return null;
-    }
-  }
-});
-
-

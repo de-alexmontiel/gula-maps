@@ -126,3 +126,23 @@ function showPage(page) {
     page.show();
   }
 }
+
+document.getElementById('search-input').addEventListener('input', function (e) {
+  const query = e.target.value.toLowerCase();
+  
+  // Obtener todos los elementos de la lista
+  const items = document.querySelectorAll('.tm-list-item');
+
+  items.forEach(function (item) {
+      const placeName = item.querySelector('.tm-list-item-name').textContent.toLowerCase();
+      const typeOfFood = item.getAttribute('data-type-of-food').toLowerCase(); // Tipo de comida
+      const keywords = item.getAttribute('data-keywords').toLowerCase(); // Palabras clave
+
+      // Filtrar por nombre, tipo de comida o palabras clave
+      if (placeName.includes(query) || typeOfFood.includes(query) || keywords.includes(query)) {
+          item.style.display = ''; // Mostrar el item
+      } else {
+          item.style.display = 'none'; // Ocultar el item
+      }
+  });
+});

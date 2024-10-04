@@ -66,7 +66,7 @@
             {% for category, data in [('resta', restaurants), ('bar', bars), ('cafe',cafes)] %}
             <div id="{{ category }}" class="tm-tab-content">
                 <div class="tm-list-container"> {% for place in data %}
-                    <div class="tm-list-item">
+                    <div class="tm-list-item" data-type-of-food="{{ place['Tipo_comida'] }}" data-keywords="{{ place['Palabras_Clave'] }}">
                         <!-- Icono del lugar -->
                         <img src="static/img/{{ place['Icono'] if place['Icono'] is defined else category ~ '-logo.png' }}"
                             alt="Image" class="tm-list-item-logo">
